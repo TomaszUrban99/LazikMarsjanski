@@ -8,9 +8,14 @@
 
 template <typename STyp, int SWymiar>
 class SWektor {
+    
     STyp  tab[SWymiar];
+
   public:
+  
     SWektor() { for (STyp &Wsp: tab) Wsp = 0; }
+
+    virtual ~SWektor(){};
   
     STyp  operator [] (unsigned int Ind) const { return tab[Ind]; }
     STyp &operator [] (unsigned int Ind)       { return tab[Ind]; }

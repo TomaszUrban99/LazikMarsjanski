@@ -9,21 +9,23 @@ int Wektor3D::Current_Count = 0;
 
 int main()
 {
-    Wektor3D Collere;
+   
 
     ifstream Input("Wektorek.txt");
-
-    Input >> Collere;
-
-    for (int i = 0; i < ROZMIAR; ++i)
-    {
-        Input>>Collere;
-    }
-
+    
+    Wektor3D Collere;
+    Wektor3D Gender;
+    Input>>Collere;
     cout << "Wektorek: " << Collere << endl;
+    Input>>Gender;
+    cout << "Genderek: " << Gender << endl;
 
+    cout << "Wynik mnozenia: " << (Collere * Gender) << endl;
+        
     cout << "Liczba powstałych obiektów: "<<Collere.getCount()<<endl;
     cout << "Liczba aktualnie powstałych obiektów: "<<Collere.getCurrentCount()<<endl;
+
+    
 
     return 0;    
 }

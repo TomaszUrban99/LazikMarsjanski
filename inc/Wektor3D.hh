@@ -28,21 +28,69 @@ class Wektor3D : public SWektor<double, ROZMIAR> {
     static int Current_Count;
 
     public:
+    
+    /*!
+        \brief Bezparametryczny konstruktor klasy Wektor3D.
 
+        Podczas tworzenia klasy zwiększana o jeden jest wartość zmiennych
+        Count oraz Current_Count przechowujących odpowiednio liczbę powstałych obiektów
+        oraz liczbę aktualnie istniejących obiektów.
+    */
     Wektor3D()
     {
         ++Count;
         ++Current_Count;
     }
 
-    ~Wektor3D()
+    /*!
+        \brief Konstruktor kopiowania dla obiektów klasy Wektor3D.
+        Podczas wywołania zwiększana jest o jeden wartość atrybutów Cout i Current_Count.
+        \param Wektor3D& - referencja do obiektu klasy 3D, który kopiowany
+        jest do obiektu, dla którego metoda została wywołana.
+    */
+    Wektor3D(Wektor3D&)
     {
-        --Current_Count;
+        ++Count;
+        ++Current_Count;
     }
 
-    int getCount(){return Count;}
+    /*!
+        \brief Destruktor klasy Wektor3D.
 
-    int getCurrentCount(){return Current_Count;}
+        Podczas niszczenia obiektu klasy Wektor3D, destruktor zmniejsza o jeden
+        wartość zmiennej statycznej Current_Count przechowującej liczbę aktualnie
+        istniejących obiektów klasy Wektor3D.
+    */
+    ~Wektor3D(){--Current_Count;}
+
+    /*!
+        \brief Metoda zwracająca liczbę powstałych obiektów klasy Wektor3D.
+        \retval int Count - wartość typu int przechowująca liczbę powstałych obiektów klasy
+        Wektor3D.
+    */
+    int getCount() const {return Count;}
+
+    /*!
+        \brief Metoda zwracająca liczbę aktualnie istniejących obiektów klasy Wektor3D.
+        \retval int Current_Count - wartość typu int przechowująca liczbę aktualnie
+        istniejących obiektów klasy Wektor3D.
+    */
+    int getCurrentCount() const {return Current_Count;}
+
+    /*!
+        \brief Przeciążenie operatora mnożenia typu element to element.
+        
+        Operacja mnożenia tego typu polega na pomnożeniu przez siebie elementów
+        przechowywanych na odpowiednich miejscach. Metoda nie modyfikuje parametrów
+        wywołania.
+        
+        \param Wektor3D Wektor2 - kopia obiektu, przez który mnożony 
+        będzie obiekt klasy Wektor3D, dla którego metoda została wywołana.
+
+        \retval Obiekt klasy Wektor3D będący wynikiem mnożenia element to element
+        dwóch wektorów będących parametrami wywołania metody.
+    */
+    Wektor3D operator*(Wektor3D& Wektor2) const;
 
 };
 
