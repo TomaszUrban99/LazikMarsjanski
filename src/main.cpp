@@ -27,7 +27,10 @@ int main()
     cout << "Wynik mnozenia: " << (Collere * Gender) << endl;
 
     cout << "Macierz rotacji: " << endl;
-    cout << Tusk.MacierzRotacjiZ(Kat) << endl;
+    Tusk = Tusk.MacierzRotacjiZ(Kat);
+
+    cout << "Wynik mnozenia skalarnego: " << endl;
+    cout << Tusk * Collere << endl;
 
     cout << "Liczba powstałych obiektów: "<<Collere.getCount()<<endl;
     cout << "Liczba aktualnie powstałych obiektów: "<<Collere.getCurrentCount()<<endl;

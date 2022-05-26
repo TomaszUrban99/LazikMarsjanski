@@ -21,3 +21,17 @@ Macierz3D Macierz3D::MacierzRotacjiZ(double AngleSt)
 
     return (*this);
 }
+
+Wektor3D Macierz3D::operator*(Wektor3D& Wektor2) const
+{
+    Wektor3D Temp;
+
+    for (int i = 0 ; i < ROZMIAR; ++i)
+    {
+        double Suma = 0;
+        for (int j = 0; j < ROZMIAR; ++j){Suma += (*this)(i, j) * Wektor2[j];}
+        Temp[i] = Suma;
+    }
+
+    return Temp;
+}
