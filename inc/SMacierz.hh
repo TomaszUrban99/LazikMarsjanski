@@ -4,10 +4,10 @@
 #include <iostream>
 #include "rozmiar.h"
 #include "SWektor.hh"
-#include "assert.h"
+#include <assert.h>
 #include <utility>
-#include "SOperacjeMatematyczne.hh"
-#include "LiczbaZespolona.hh"
+
+constexpr double epsilon = 3;
 
 template <typename STyp, typename SPole, uint SWymiar>
 class SMacierz
