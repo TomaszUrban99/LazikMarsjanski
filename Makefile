@@ -11,8 +11,8 @@ ${TRGDIR}:
 ${OBJ}:
 	mkdir -p ${OBJ}
 
-${TRGDIR}/test_lazikap: ${OBJ} ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o
-	g++ -o ${TRGDIR}/test_lazikap ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o
+${TRGDIR}/test_lazikap: ${OBJ} ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o ${OBJ}/OperacjeMat.o
+	g++ -o ${TRGDIR}/test_lazikap ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o ${OBJ}/OperacjeMat.o
 
 ${OBJ}/main.o: src/main.cpp inc/Wektor3D.hh inc/Macierz3D.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/main.o src/main.cpp
@@ -20,6 +20,8 @@ ${OBJ}/main.o: src/main.cpp inc/Wektor3D.hh inc/Macierz3D.hh
 ${OBJ}/Wektor3D.o: src/Wektor3D.cpp inc/Wektor3D.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/Wektor3D.o src/Wektor3D.cpp
 
-${OBJ}/Macierz3D.o: src/Macierz3D.cpp
+${OBJ}/Macierz3D.o: src/Macierz3D.cpp inc/OperacjeMat.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/Macierz3D.o src/Macierz3D.cpp
 
+${OBJ}/OperacjeMat.o: src/OperacjeMat.cpp
+	g++ ${CXXFLAGS} -o ${OBJ}/OperacjeMat.o src/OperacjeMat.cpp
