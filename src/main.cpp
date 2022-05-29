@@ -4,6 +4,7 @@
 #include "PowierzchniaMarsa.hh"
 #include "ObiektGeom.hh"
 #include "Kolory.hh"
+#include "Lazik.hh"
 #include "Wektor3D.hh"
 
 
@@ -53,14 +54,13 @@ int main()
   Inicjalizuj_Lacze(Lacze);
   if (!Inicjalizuj_PowierzchnieMarsa(Lacze)) return 1;
 
-  ObiektGeom  Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
-  ObiektGeom  Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
-  ObiektGeom  Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
-  
+  Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
+  Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
+  Lazik Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
+
   DodajDoListyRysowania(Lacze,Ob1);
   DodajDoListyRysowania(Lacze,Ob2);
   DodajDoListyRysowania(Lacze,Ob3);
-
   
   Ob1.Przelicz_i_Zapisz_Wierzcholki();
   Ob2.Przelicz_i_Zapisz_Wierzcholki();

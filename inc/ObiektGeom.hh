@@ -23,6 +23,8 @@ class ObiektGeom{
 
     public:
 
+    ObiektGeom () = default;
+
     /*!
         \brief Kontruktor parametryczny obiektu klasy ObiektGeom.
         \param int Kolor - numer identyfikacyjny koloru w jakim ma
@@ -80,6 +82,8 @@ class ObiektGeom{
         \retval BRAK
     */
     void ZmienSkale (Wektor3D& NowaSkala) {this->Skala = NowaSkala;}
+
+    void ZmienMacierzRotacji(double AngleSt) { this->MacierzRotacji = Wez_MacierzRotacji().MacierzRotacjiZ(AngleSt);}
 
     void ZmienMacierzRotacji (Macierz3D& NowaMacierzRotacji) {this->MacierzRotacji = NowaMacierzRotacji;}
 

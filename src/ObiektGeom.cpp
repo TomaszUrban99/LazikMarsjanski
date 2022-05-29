@@ -9,7 +9,7 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki()
     if(Output.fail()) return false;
 
     if(!Przelicz_i_Zapisz_Wierzcholki(Input, Output)) return false;
-
+    
     Input.close();
     Output.close();
 
