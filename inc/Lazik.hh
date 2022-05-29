@@ -1,7 +1,9 @@
 #ifndef LAZIK_HH
 #define LAZIK_HH
 
+#include <cmath>
 #include "ObiektGeom.hh"
+#include "OperacjeMat.hh"
 
 class Lazik: public ObiektGeom{
 
@@ -41,6 +43,33 @@ class Lazik: public ObiektGeom{
        this->ZmienNazwaPliku_PlikDoRysowania(PlikDoRysowania); 
    }
 
+   void Zmien_OdlegloscDoPrzejechania(double NowaOdleglosc){
+    this->OdlegloscDoPrzejechania = NowaOdleglosc;}
+    
+    void Zmien_Szybkosc(double NowaSzybkosc){
+        this->Szybkosc = NowaSzybkosc;}
+    
+    void Zmien_KatDoObrotuSt(double NowyKatDoObrotuSt){
+        this->KatDoObrotuSt = NowyKatDoObrotuSt;}
+    
+    void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
+        this->PredkoscObrotu = NowaPredkoscObrotu;}
+
+    double Wez_OdlegloscDoPrzejechania () const {return this->OdlegloscDoPrzejechania;}
+    double& Wez_OdlegloscDoPrzejechania () {return this->OdlegloscDoPrzejechania;}
+
+    double Wez_Szybkosc () const {return this->Szybkosc;}
+    double& Wez_Szybkosc () {return this->Szybkosc;}
+
+    double Wez_KatDoObrotuSt () const {return this->KatDoObrotuSt;}
+    double& Wez_KatDoObrotuSt () {return this->KatDoObrotuSt;}
+
+    double Wez_PredkoscObrotu () const {return this->PredkoscObrotu;}
+    double& Wez_PredkoscObrotu () {return this->PredkoscObrotu;} 
+
+   void TranslacjaLazika ();
+
+   void ObrotLazika ();
 
 };
 

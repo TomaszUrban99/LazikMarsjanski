@@ -73,7 +73,11 @@ class ObiektGeom{
         \param double NowyKatSt - zmienna przechowująca wartość nowego kąta orientacji
         \retval BRAK
     */
-    void ZmienKatOrientacjiSt (double NowyKatSt) {this->KatOrientacjiSt = NowyKatSt;}
+    void ZmienKatOrientacjiSt (double NowyKatSt) {
+        this->KatOrientacjiSt = NowyKatSt;
+        std::cout << "Kat: " << this->Wez_KatOrientacjiSt() << std::endl;
+        ZmienMacierzRotacji(this->KatOrientacjiSt);
+    }
 
     /*!
         \brief Metoda umożliwiająca zmianę wektora określającego skalę wyświetlania obiektów.

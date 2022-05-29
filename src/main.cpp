@@ -72,15 +72,72 @@ int main()
   cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
   cin.ignore(100,'\n');
 
+  double Temp;
+
+  cout << "Podaj odleglosc" << endl;
+  cin >> Temp;
+  Ob1.Zmien_OdlegloscDoPrzejechania(Temp);
+  cout << "Podaj szybkosc" << endl;
+  cin >> Temp;
+  Ob1.Zmien_Szybkosc(Temp);
+  Ob1.TranslacjaLazika();
   Ob1.Przelicz_i_Zapisz_Wierzcholki();
   Lacze.Rysuj();
 
   cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
   cin.ignore(100,'\n');
-
+  
+  cout << "Podaj kat obrotu" << endl;
+  cin >> Temp;
+  Ob1.Zmien_KatDoObrotuSt(Temp);
+  cout << "Podaj predkosc obrotu" << endl;
+  cin >> Temp;
+  Ob1.Zmien_PredkoscObrotu(Temp);
+  Ob1.ObrotLazika();
   Ob1.Przelicz_i_Zapisz_Wierzcholki();
   Lacze.Rysuj();
+
+  cout << "Polozenie: " << Ob1.Wez_Polozenie() << endl;
+  cout << "Kat orientacji: " << Ob1.Wez_KatOrientacjiSt() << endl;
   
   cout << "Nacisnij klawisz ENTER, aby zakonczyc." << endl;
+  cin.ignore(100,'\n');
+
+  cout << "Podaj odleglosc" << endl;
+  cin >> Temp;
+  Ob1.Zmien_OdlegloscDoPrzejechania(Temp);
+  cout << "Podaj szybkosc" << endl;
+  cin >> Temp;
+  Ob1.Zmien_Szybkosc(Temp);
+  Ob1.TranslacjaLazika();
+  
+  
+  Ob1.Przelicz_i_Zapisz_Wierzcholki();
+
+  cout << Ob1.Wez_KatOrientacjiSt() << endl;
+  cout << Ob1.Wez_Polozenie() << endl;
+  Lacze.Rysuj();
+
+  cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
+  cin.ignore(100,'\n');
+
+    cout << "Podaj kat obrotu" << endl;
+  cin >> Temp;
+  Ob1.Zmien_KatDoObrotuSt(Temp);
+  cout << "Podaj predkosc obrotu" << endl;
+  cin >> Temp;
+  Ob1.Zmien_PredkoscObrotu(Temp);
+  Ob1.ObrotLazika();
+  Ob1.Przelicz_i_Zapisz_Wierzcholki();
+  Lacze.Rysuj();
+
+  cout << "Polozenie: " << Ob1.Wez_Polozenie() << endl;
+  cout << "Kat orientacji: " << Ob1.Wez_KatOrientacjiSt() << endl;
+  
+  cout << "Nacisnij klawisz ENTER, aby zakonczyc." << endl;
+  cin.ignore(100,'\n');
+
+
+  cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
   cin.ignore(100,'\n');
 }

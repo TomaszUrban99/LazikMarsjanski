@@ -17,7 +17,7 @@ ${TRGDIR}/test_lazikap: ${OBJ} ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.
 ${OBJ}/main.o: src/main.cpp inc/Wektor3D.hh inc/Macierz3D.hh inc/ObiektGeom.hh inc/lacze_do_gnuplota.hh inc/PowierzchniaMarsa.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/main.o src/main.cpp
 
-${OBJ}/Lazik.o: src/Lazik.cpp inc/ObiektGeom.hh
+${OBJ}/Lazik.o: src/Lazik.cpp inc/ObiektGeom.hh inc/OperacjeMat.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/Lazik.o src/Lazik.cpp
 
 ${OBJ}/ObiektGeom.o: src/ObiektGeom.cpp inc/Wektor3D.hh inc/Macierz3D.hh
