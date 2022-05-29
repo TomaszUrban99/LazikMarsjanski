@@ -4,6 +4,10 @@
 #include "SWektor.hh"
 #include "rozmiar.h"
 
+constexpr int ZERO = 0;
+constexpr int ONE = 1;
+constexpr int TWO = 2;
+
 /*!
     \brief Klasa modelująca pojęcie trójwymiarowego wektora.
 
@@ -54,6 +58,26 @@ class Wektor3D : public SWektor<double, ROZMIAR> {
         ++Current_Count;
     }
 
+    /*! 
+        \brief Konstruktor parametryczny obiektu klasy Wektor3D
+        \param double X, Y, Z - początkowe współrzędne obiektu
+    */
+    Wektor3D (double X, double Y, double Z)
+    {
+        (*this)[ZERO] = X;
+        (*this)[ONE] = Y;
+        (*this)[TWO] = Z;
+
+        ++Count;
+        ++Current_Count;
+    }
+
+    Wektor3D(const Wektor3D&)
+    {
+        ++Count;
+        ++Current_Count;
+    }
+
     /*!
         \brief Destruktor klasy Wektor3D.
 
@@ -90,7 +114,10 @@ class Wektor3D : public SWektor<double, ROZMIAR> {
         \retval Obiekt klasy Wektor3D będący wynikiem mnożenia element to element
         dwóch wektorów będących parametrami wywołania metody.
     */
-    Wektor3D operator*(Wektor3D& Wektor2) const;
+    Wektor3D& operator*(Wektor3D& Wektor2);
+
+    void operator=(SWektor<double, ROZMIAR> Wektor2){
+        for(int i = 0; i < ROZMIAR; ++i) (*this)[i] = Wektor2[i];}
 
 };
 

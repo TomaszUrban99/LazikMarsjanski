@@ -8,7 +8,6 @@
 
 using Wektor = SWektor<double, ROZMIAR>;
 
-constexpr int ZERO = 0;
 constexpr int JEDEN = 1;
 constexpr int DWA = 2;
 
@@ -45,7 +44,7 @@ class Macierz3D : public SMacierz<Wektor, double, ROZMIAR>{
 
         \retval Wartość mnożenia skalarnego dwóch parametrów wywołania.
     */
-    Wektor3D operator* (Wektor3D& Wektor2) const;
+    Wektor3D& operator* (Wektor3D& Wektor2);
 };
 
 #endif

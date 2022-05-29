@@ -22,7 +22,11 @@ Macierz3D Macierz3D::MacierzRotacjiZ(double AngleSt)
     return (*this);
 }
 
-Wektor3D Macierz3D::operator*(Wektor3D& Wektor2) const
+/* 
+    Przeciążenie operatora mnożenia skalarnego trójwymiarowej 
+    macierzy (Macierz3D) przez trójwymiarowy wektor (Wektor 3D) 
+*/
+Wektor3D& Macierz3D::operator*(Wektor3D& Wektor2)
 {
     Wektor3D Temp;
 
