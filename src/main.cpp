@@ -23,14 +23,15 @@ int main()
   Wektor3D PolozenieCuriosity (50, 50, 0);
   Wektor3D Skala (10, 10, 10);
 
-  Scena Mars;
   
-  Mars.Inicjalizuj_Lacze();
-  if (!Inicjalizuj_PowierzchnieMarsa(Mars.Wez_Lacze())) return 1;
-
   Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
   Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
   Lazik Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
+  
+  Scena Mars(Ob1);
+  
+  Mars.Inicjalizuj_Lacze();
+  if (!Inicjalizuj_PowierzchnieMarsa(Mars.Wez_Lacze())) return 1;
 
   Mars.DodajDoListyObiektow(Ob1);
   Mars.DodajDoListyObiektow(Ob2);
@@ -46,7 +47,7 @@ int main()
     (*Iter)->Przelicz_i_Zapisz_Wierzcholki();
     cout << (**Iter) << endl;
     ++Iter; 
-  } 
+  }
   
   cout << endl << "Start programu gnuplot" << endl << endl;
   (Mars.Wez_Lacze()).Rysuj();

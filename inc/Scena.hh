@@ -15,7 +15,12 @@ class Scena{
 
     public:
 
-    void Zmien_AktywnyLazik(std::shared_ptr<Lazik> NowyAktywnyLazik) {this->AktywnyLazik = NowyAktywnyLazik;}
+    Scena (Lazik& PocztkowyAktywnyLazik)
+    {
+        this->AktywnyLazik = std::make_shared<Lazik>(PocztkowyAktywnyLazik);
+    }
+
+    void Zmien_AktywnyLazik(Lazik NowyAktywnyLazik) {*(this->AktywnyLazik) = NowyAktywnyLazik;}
 
     void Zmien_Lacze(PzG::LaczeDoGNUPlota& NoweLacze) {this->Lacze = NoweLacze;}
 
