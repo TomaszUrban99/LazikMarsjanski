@@ -20,13 +20,13 @@ int main()
   PzG::LaczeDoGNUPlota  Lacze;
   Wektor3D PolozenieFSR (0, 0, 0);
   Wektor3D PolozeniePerservance (20, 20, 0);
-  Wektor3D PolozenieCuriosity (100, 100, 0);
+  Wektor3D PolozenieCuriosity (50, 50, 0);
   Wektor3D Skala (10, 10, 10);
 
   Scena Mars;
   
   Mars.Inicjalizuj_Lacze();
-  if (!Inicjalizuj_PowierzchnieMarsa(Lacze)) return 1;
+  if (!Inicjalizuj_PowierzchnieMarsa(Mars.Wez_Lacze())) return 1;
 
   Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
   Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
@@ -38,12 +38,18 @@ int main()
 
   Mars.DodajDoListyRysowania();
   
-  Ob1.Przelicz_i_Zapisz_Wierzcholki();
-  Ob2.Przelicz_i_Zapisz_Wierzcholki();
-  Ob3.Przelicz_i_Zapisz_Wierzcholki();  
+  list<shared_ptr<ObiektGeom>>::iterator Iter = (Mars.Wez_Liste()).begin();
+  
+  while (Iter != (Mars.Wez_Liste()).end())
+  {
+    cout << "Lazik przed: " << (**Iter) << endl;
+    (*Iter)->Przelicz_i_Zapisz_Wierzcholki();
+    cout << (**Iter) << endl;
+    ++Iter; 
+  } 
   
   cout << endl << "Start programu gnuplot" << endl << endl;
-  Lacze.Rysuj();
+  (Mars.Wez_Lacze()).Rysuj();
 
   cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
   cin.ignore(100,'\n');

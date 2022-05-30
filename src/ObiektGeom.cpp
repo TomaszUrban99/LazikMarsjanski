@@ -38,3 +38,12 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki(std::istream& Input, std::ostream
     if(!Input.eof()) return false;
     return true;
 }
+
+std::ostream& operator<<(std::ostream& Output, ObiektGeom& DanyLazik)
+{
+    Output << "Nazwa Lazika: " << DanyLazik.Wez_NazwaObiektu() << std::endl;
+    Output << "Polozenie lazika: " << DanyLazik.Wez_Polozenie() << std::endl;
+    Output << "Kat orientacji lazika [st]: " << DanyLazik.Wez_KatOrientacjiSt() << std::endl;
+
+    return Output;
+}

@@ -126,4 +126,6 @@ class ObiektGeom{
     bool Przelicz_i_Zapisz_Wierzcholki (std::istream& Input, std::ostream& Output);  
 };
 
+std::ostream& operator<<(std::ostream& Output, ObiektGeom& DanyLazik);
+
 #endif

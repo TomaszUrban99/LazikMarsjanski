@@ -15,15 +15,23 @@ class Scena{
 
     public:
 
+    void Zmien_AktywnyLazik(std::shared_ptr<Lazik> NowyAktywnyLazik) {this->AktywnyLazik = NowyAktywnyLazik;}
+
     void Zmien_Lacze(PzG::LaczeDoGNUPlota& NoweLacze) {this->Lacze = NoweLacze;}
 
     void ZmienListe(std::list<std::shared_ptr<ObiektGeom>> NowaLista){this->ObiektySceny = NowaLista;}
 
     void DodajDoListyObiektow (ObiektGeom& Ob1){
-        std::shared_ptr<ObiektGeom> Wsk = std::make_shared<ObiektGeom>(Ob1);
-        (this->ObiektySceny).push_back(Wsk);}
+        std::shared_ptr<ObiektGeom> Wsk = std::make_shared<ObiektGeom>();
+        *Wsk = Ob1;
+        (this->ObiektySceny).push_back(Wsk);
+    }
     
-    std::list<std::shared_ptr<ObiektGeom>> Wez_Liste () {return this->ObiektySceny;}
+    std::list<std::shared_ptr<ObiektGeom>> Wez_Liste () const {return this->ObiektySceny;}
+
+    std::list<std::shared_ptr<ObiektGeom>>& Wez_Liste () {return this->ObiektySceny;}
+
+    PzG::LaczeDoGNUPlota& Wez_Lacze () {return this->Lacze;}
 
     /*!
         \brief Inicjalizuje połączenie z programem gnuplot oraz rozmiar świata.
