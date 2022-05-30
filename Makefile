@@ -11,11 +11,14 @@ ${TRGDIR}:
 ${OBJ}:
 	mkdir -p ${OBJ}
 
-${TRGDIR}/test_lazikap: ${OBJ} ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o ${OBJ}/OperacjeMat.o ${OBJ}/ObiektGeom.o ${OBJ}/lacze_do_gnuplota.o ${OBJ}/PowierzchniaMarsa.o ${OBJ}/Lazik.o
-	g++ -o ${TRGDIR}/test_lazikap ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o ${OBJ}/OperacjeMat.o ${OBJ}/ObiektGeom.o ${OBJ}/lacze_do_gnuplota.o ${OBJ}/PowierzchniaMarsa.o ${OBJ}/Lazik.o
+${TRGDIR}/test_lazikap: ${OBJ} ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o ${OBJ}/OperacjeMat.o ${OBJ}/ObiektGeom.o ${OBJ}/lacze_do_gnuplota.o ${OBJ}/PowierzchniaMarsa.o ${OBJ}/Lazik.o ${OBJ}/Scena.o
+	g++ -o ${TRGDIR}/test_lazikap ${OBJ}/main.o ${OBJ}/Wektor3D.o ${OBJ}/Macierz3D.o ${OBJ}/OperacjeMat.o ${OBJ}/ObiektGeom.o ${OBJ}/lacze_do_gnuplota.o ${OBJ}/PowierzchniaMarsa.o ${OBJ}/Lazik.o ${OBJ}/Scena.o
 
 ${OBJ}/main.o: src/main.cpp inc/Wektor3D.hh inc/Macierz3D.hh inc/ObiektGeom.hh inc/lacze_do_gnuplota.hh inc/PowierzchniaMarsa.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/main.o src/main.cpp
+
+${OBJ}/Scena.o: src/Scena.cpp inc/Lazik.hh inc/lacze_do_gnuplota.hh
+	g++ ${CXXFLAGS} -o ${OBJ}/Scena.o src/Scena.cpp
 
 ${OBJ}/Lazik.o: src/Lazik.cpp inc/ObiektGeom.hh inc/OperacjeMat.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/Lazik.o src/Lazik.cpp
