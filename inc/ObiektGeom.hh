@@ -117,9 +117,15 @@ class ObiektGeom{
 
     std::string Wez_NazwaObiektu() const {return this->NazwaObiektu;}
 
+    std::string& Wez_NazwaObiektu() {return this->NazwaObiektu;}
+
     std::string Wez_NazwaPlikBrylaWzorcowa () const {return this->NazwaPliku_BrylaWzorcowa;}
 
+    std::string& Wez_NazwaPlikBrylaWzorcowa () {return this->NazwaPliku_BrylaWzorcowa;}
+
     std::string Wez_NazwaPlikDoRysowania () const {return this->NazwaPliku_PlikDoRysowania;} 
+
+    std::string& Wez_NazwaPlikDoRysowania () {return this->NazwaPliku_PlikDoRysowania;} 
 
     bool Przelicz_i_Zapisz_Wierzcholki ();
 

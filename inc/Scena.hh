@@ -20,7 +20,16 @@ class Scena{
         this->AktywnyLazik = std::make_shared<Lazik>(PocztkowyAktywnyLazik);
     }
 
-    void Zmien_AktywnyLazik(Lazik NowyAktywnyLazik) {*(this->AktywnyLazik) = NowyAktywnyLazik;}
+    void Zmien_AktywnyLazik(int NumerLazika) {
+        std::list<std::shared_ptr<ObiektGeom>>::iterator Iter = (this->ObiektySceny).begin();
+        
+        for ( int i = 0; i < NumerLazika; ++i) {++Iter;} 
+        
+        ObiektGeom *Temp2 = (*Iter).get();
+        Lazik *Temp = new Lazik();
+        Temp = static_cast<Lazik*>(Temp2);
+        (this->AktywnyLazik).reset(Temp);
+    }
 
     void Zmien_Lacze(PzG::LaczeDoGNUPlota& NoweLacze) {this->Lacze = NoweLacze;}
 
@@ -31,6 +40,8 @@ class Scena{
         *Wsk = Ob1;
         (this->ObiektySceny).push_back(Wsk);
     }
+
+    std::shared_ptr<Lazik> Wez_AktywnyLazik () {return this->AktywnyLazik;}
     
     std::list<std::shared_ptr<ObiektGeom>> Wez_Liste () const {return this->ObiektySceny;}
 

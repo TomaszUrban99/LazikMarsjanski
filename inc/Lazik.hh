@@ -14,6 +14,8 @@ class Lazik: public ObiektGeom{
 
     public:
 
+    Lazik() = default;
+
     /*!
         \brief Kontruktor parametryczny obiektu klasy ObiektGeom.
         \param int Kolor - numer identyfikacyjny koloru w jakim ma

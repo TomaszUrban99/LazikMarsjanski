@@ -23,7 +23,6 @@ int main()
   Wektor3D PolozenieCuriosity (50, 50, 0);
   Wektor3D Skala (10, 10, 10);
 
-  
   Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
   Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
   Lazik Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
@@ -38,16 +37,20 @@ int main()
   Mars.DodajDoListyObiektow(Ob3);
 
   Mars.DodajDoListyRysowania();
-  
-  list<shared_ptr<ObiektGeom>>::iterator Iter = (Mars.Wez_Liste()).begin();
-  
-  while (Iter != (Mars.Wez_Liste()).end())
-  {
-    cout << "Lazik przed: " << (**Iter) << endl;
-    (*Iter)->Przelicz_i_Zapisz_Wierzcholki();
-    cout << (**Iter) << endl;
-    ++Iter; 
-  }
+
+  int Number;
+
+  cout << "Zmiana aktywnego lazika: " << endl;
+  cout << "Podaj numer lazika (0-2)" << endl; // Dopisać makro zabezpieczające!!!
+  cin >> Number;
+
+  cout << "Aktywny lazik: " << endl;
+  cout << *(Mars.Wez_AktywnyLazik()) << endl;
+
+  Mars.Zmien_AktywnyLazik(Number);
+
+  cout << "Aktywny lazik: " << endl;
+  cout << *(Mars.Wez_AktywnyLazik()) << endl;
   
   cout << endl << "Start programu gnuplot" << endl << endl;
   (Mars.Wez_Lacze()).Rysuj();
@@ -59,13 +62,15 @@ int main()
 
   cout << "Podaj odleglosc" << endl;
   cin >> Temp;
-  Ob1.Zmien_OdlegloscDoPrzejechania(Temp);
+  (Mars.Wez_AktywnyLazik())->Zmien_OdlegloscDoPrzejechania(Temp);
   cout << "Podaj szybkosc" << endl;
   cin >> Temp;
-  Ob1.Zmien_Szybkosc(Temp);
-  Ob1.TranslacjaLazika();
-  Ob1.Przelicz_i_Zapisz_Wierzcholki();
-  Lacze.Rysuj();
+  (Mars.Wez_AktywnyLazik())->Zmien_Szybkosc(Temp);
+  (Mars.Wez_AktywnyLazik())->TranslacjaLazika();
+  (Mars.Wez_AktywnyLazik())->Przelicz_i_Zapisz_Wierzcholki();
+  cout << "Lazik: " << endl;
+  cout << *(Mars.Wez_AktywnyLazik());
+  (Mars.Wez_Lacze()).Rysuj();
 
   cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
   cin.ignore(100,'\n');
