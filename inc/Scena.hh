@@ -9,7 +9,7 @@
 #include "PowierzchniaMarsa.hh"
 
 constexpr int STALA_ANIMACJI_TRANSLACJA = 1000;
-constexpr int STALA_ANIMACJI_ROTACJA = 100;
+constexpr int STALA_ANIMACJI_ROTACJA = 10;
 
 class Scena{
 
@@ -54,11 +54,7 @@ class Scena{
     */
     void ZmienListe(std::list<std::shared_ptr<ObiektGeom>> NowaLista){this->ObiektySceny = NowaLista;}
 
-    void DodajDoListyObiektow (ObiektGeom& Ob1){
-        std::shared_ptr<ObiektGeom> Wsk = std::make_shared<ObiektGeom>();
-        *Wsk = Ob1;
-        (this->ObiektySceny).push_back(Wsk);
-    }
+    void DodajDoListyObiektow (ObiektGeom& Ob1);
 
     std::shared_ptr<Lazik> Wez_AktywnyLazik () {return this->AktywnyLazik;}
     

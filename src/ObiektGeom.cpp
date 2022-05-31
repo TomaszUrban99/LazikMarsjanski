@@ -27,6 +27,7 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki(std::istream& Input, std::ostream
         if(Input.fail()) return false;
 
         WspWierz = (this->MacierzRotacji)*((this->Skala)*WspWierz)+(this->Polozenie);
+        std::cout << "Wynik: " << (this->MacierzRotacji)*((this->Skala)*WspWierz) << std::endl;
         Output << WspWierz << std::endl;
         if(Output.fail()) return false;
         ++IndeksWiersza;

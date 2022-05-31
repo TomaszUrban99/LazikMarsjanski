@@ -20,105 +20,112 @@ int main()
   Wektor3D PolozeniePerservance (20, 20, 0);
   Wektor3D PolozenieCuriosity (50, 50, 0);
   Wektor3D Skala (10, 10, 10);
+  char klawisz[2] = "m";
 
   Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
   Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
   Lazik Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
   
   Scena Mars(Ob1);
-  
-  Mars.Inicjalizuj_Lacze();
-  if (!Inicjalizuj_PowierzchnieMarsa(Mars.Wez_Lacze())) return 1;
 
   Mars.DodajDoListyObiektow(Ob1);
   Mars.DodajDoListyObiektow(Ob2);
   Mars.DodajDoListyObiektow(Ob3);
+  
+  Mars.Inicjalizuj_Lacze();
+  if (!Inicjalizuj_PowierzchnieMarsa(Mars.Wez_Lacze())) return 1;
 
   Mars.DodajDoListyRysowania();
+  Mars.Zmien_AktywnyLazik(0);
 
-  int Number;
+  list<shared_ptr<ObiektGeom>>::iterator Iter = Mars.Wez_Liste().begin();
 
-  cout << "Zmiana aktywnego lazika: " << endl;
-  cout << "Podaj numer lazika (0-2)" << endl; // Dopisać makro zabezpieczające!!!
-  cin >> Number;
+  while (Iter != Mars.Wez_Liste().end())
+  {
+    (**Iter).Przelicz_i_Zapisz_Wierzcholki();
+    ++Iter;
+  }
 
-  cout << "Aktywny lazik: " << endl;
-  cout << *(Mars.Wez_AktywnyLazik()) << endl;
-
-  Mars.Zmien_AktywnyLazik(Number);
-
-  cout << "Aktywny lazik: " << endl;
-  cout << *(Mars.Wez_AktywnyLazik()) << endl;
-  
   cout << endl << "Start programu gnuplot" << endl << endl;
   (Mars.Wez_Lacze()).Rysuj();
 
-  cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
+  cout << "Nacisnij klawisz ENTER, aby przejsc dalej" << endl;
   cin.ignore(100,'\n');
 
-  double Temp;
+  while((klawisz[0])!='k')
+  {
+    double Temp;
 
-  cout << "Podaj odleglosc" << endl;
-  cin >> Temp;
-  (Mars.Wez_AktywnyLazik())->Zmien_OdlegloscDoPrzejechania(Temp);
-  cout << "Podaj szybkosc" << endl;
-  cin >> Temp;
-  (Mars.Wez_AktywnyLazik())->Zmien_Szybkosc(Temp);
-  Mars.AnimacjaTranslacji();
-  cout << "Lazik: " << endl;
-  cout << *(Mars.Wez_AktywnyLazik());
+    switch(klawisz[0])
+    {
+      case 'j':
+        
+        cout << "Podaj odleglosc" << endl;
+        cin >> Temp;
+        (Mars.Wez_AktywnyLazik())->Zmien_OdlegloscDoPrzejechania(Temp);
+        cout << "Podaj szybkosc" << endl;
+        cin >> Temp;
+        (Mars.Wez_AktywnyLazik())->Zmien_Szybkosc(Temp);
+        Mars.AnimacjaTranslacji();
+      
+        cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
+        cin.ignore(100,'\n');
+      
+      break;
 
-  cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
-  cin.ignore(100,'\n');
-  
-  cout << "Podaj kat obrotu" << endl;
-  cin >> Temp;
-  Mars.Wez_AktywnyLazik()->Zmien_KatDoObrotuSt(Temp);
-  cout << "Podaj predkosc obrotu" << endl;
-  cin >> Temp;
-  Mars.Wez_AktywnyLazik()->Zmien_PredkoscObrotu(Temp);
-  Mars.AnimacjaObrotu();
-  cout << "Lazik po obrocie: " << endl;
-  cout << *(Mars.Wez_AktywnyLazik()) << endl;
-  
-  cout << "Nacisnij klawisz ENTER, aby zakonczyc." << endl;
-  cin.ignore(100,'\n');
+      case 'o':
 
-  cout << "Podaj odleglosc" << endl;
-  cin >> Temp;
-  Ob1.Zmien_OdlegloscDoPrzejechania(Temp);
-  cout << "Podaj szybkosc" << endl;
-  cin >> Temp;
-  Ob1.Zmien_Szybkosc(Temp);
-  Ob1.TranslacjaLazika();
-  
-  
-  Ob1.Przelicz_i_Zapisz_Wierzcholki();
+        cout << "Podaj kat obrotu" << endl;
+        cin >> Temp;
+        Mars.Wez_AktywnyLazik()->Zmien_KatDoObrotuSt(Temp);
+        cout << "Podaj predkosc obrotu" << endl;
+        cin >> Temp;
+        Mars.Wez_AktywnyLazik()->Zmien_PredkoscObrotu(Temp);
+        Mars.AnimacjaObrotu();
 
-  cout << Ob1.Wez_KatOrientacjiSt() << endl;
-  cout << Ob1.Wez_Polozenie() << endl;
-  Lacze.Rysuj();
+        cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
+        cin.ignore(100,'\n');
+      
+      break;
 
-  cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
-  cin.ignore(100,'\n');
+      case 'm':
 
-    cout << "Podaj kat obrotu" << endl;
-  cin >> Temp;
-  Ob1.Zmien_KatDoObrotuSt(Temp);
-  cout << "Podaj predkosc obrotu" << endl;
-  cin >> Temp;
-  Ob1.Zmien_PredkoscObrotu(Temp);
-  Ob1.ObrotLazika();
-  Ob1.Przelicz_i_Zapisz_Wierzcholki();
-  Lacze.Rysuj();
+        cout << "Menu programu lazik marsjanski" << endl;
+        cout << "j - jazda na wprost" << endl;
+        cout << "o - obrot lazika" << endl;
+        cout << "d - wyswietl aktywny lazik" << endl;
+        cout << "s - selekcja lazika" << endl;
+        cout << "k - koniec programu" << endl;
+      
+      break;
 
-  cout << "Polozenie: " << Ob1.Wez_Polozenie() << endl;
-  cout << "Kat orientacji: " << Ob1.Wez_KatOrientacjiSt() << endl;
-  
-  cout << "Nacisnij klawisz ENTER, aby zakonczyc." << endl;
-  cin.ignore(100,'\n');
+      case 'd':
 
+        cout << *(Mars.Wez_AktywnyLazik()) << endl;
+      
+      break;
 
-  cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
-  cin.ignore(100,'\n');
+      case 's':
+
+        int Numer;
+        cout << "Podaj numer lazika, ktory chcesz wybrac" << endl;
+        cin >> Numer;
+        Mars.Zmien_AktywnyLazik(Numer);
+        cout << "Aktywny lazik: " << endl;
+        cout << *(Mars.Wez_AktywnyLazik()) << endl;
+      
+      break;
+
+      default :
+
+        cout << "Nierozpoznana komenda" << endl;
+      
+      break;
+    }
+
+    cout << "Podaj komende (m - wyswietl menu) " << endl;
+    cin >> klawisz;
+  }
+
+  return 0;
 }

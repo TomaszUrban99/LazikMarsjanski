@@ -109,7 +109,7 @@ class ObiektGeom{
     Wektor3D Wez_Skale() const {return this->Skala;}
 
     Wektor3D& Wez_Skale() {return this->Skala;}
-
+    
     Macierz3D Wez_MacierzRotacji() const {return this->MacierzRotacji;}
 
     Macierz3D& Wez_MacierzRotacji() {return this->MacierzRotacji;}

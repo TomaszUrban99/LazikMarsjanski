@@ -16,5 +16,6 @@ void Lazik::ObrotLazika()
     double Temp;
     Temp = (this->Wez_KatOrientacjiSt())+Znak(this->PredkoscObrotu)*(this->KatDoObrotuSt);
     this->ZmienKatOrientacjiSt(fmod(Temp, KAT_PELNY));
-    this->Zmien_KatDoObrotuSt(ZERO);   
+    this->ZmienMacierzRotacji(this->Wez_KatOrientacjiSt());
+    this->Zmien_KatDoObrotuSt(ZERO); 
 }

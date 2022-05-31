@@ -2,14 +2,12 @@
 
 void Scena::Zmien_AktywnyLazik(int NumerLazika)
 {
+  
   std::list<std::shared_ptr<ObiektGeom>>::iterator Iter = (this->ObiektySceny).begin();
         
   for ( int i = 0; i < NumerLazika; ++i) {++Iter;} 
-        
-  ObiektGeom *Temp2 = (*Iter).get();
-  Lazik *Temp = new Lazik();
-  Temp = static_cast<Lazik*>(Temp2);
-  (this->AktywnyLazik).reset(Temp);
+
+  this->AktywnyLazik = std::static_pointer_cast<Lazik>(*Iter);
 }
 
 void Scena::Inicjalizuj_Lacze()
@@ -55,6 +53,12 @@ void Scena::AnimacjaTranslacji()
   }
 }
 
+void Scena::DodajDoListyObiektow (ObiektGeom& Ob1){
+  std::shared_ptr<ObiektGeom> Wsk = std::make_shared<ObiektGeom>();
+  *Wsk = Ob1;
+  (this->ObiektySceny).push_back(Wsk);
+}
+
 int Scena::LiczbaKlatekRotacji(){
   return ceill (fabs(this->AktywnyLazik->Wez_KatDoObrotuSt())/fabs(this->AktywnyLazik->Wez_PredkoscObrotu()))*STALA_ANIMACJI_ROTACJA;
 }
@@ -68,7 +72,6 @@ void Scena::AnimacjaObrotu()
   {
     this->AktywnyLazik->Zmien_KatDoObrotuSt(Kat_Klatka);
     this->AktywnyLazik->ObrotLazika();
-    std::cout<<this->AktywnyLazik->Wez_KatOrientacjiSt()<<std::endl;
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
     (this->Lacze).Rysuj();
   }
