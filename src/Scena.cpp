@@ -54,3 +54,22 @@ void Scena::AnimacjaTranslacji()
     (this->Lacze).Rysuj();
   }
 }
+
+int Scena::LiczbaKlatekRotacji(){
+  return ceill (fabs(this->AktywnyLazik->Wez_KatDoObrotuSt())/fabs(this->AktywnyLazik->Wez_PredkoscObrotu()))*STALA_ANIMACJI_ROTACJA;
+}
+
+void Scena::AnimacjaObrotu()
+{
+  int LiczbaKlatek = LiczbaKlatekRotacji();
+  double Kat_Klatka = (fabs(this->AktywnyLazik->Wez_KatDoObrotuSt()))/LiczbaKlatek;
+
+  for (int i = 0; i < LiczbaKlatek; ++i)
+  {
+    this->AktywnyLazik->Zmien_KatDoObrotuSt(Kat_Klatka);
+    this->AktywnyLazik->ObrotLazika();
+    std::cout<<this->AktywnyLazik->Wez_KatOrientacjiSt()<<std::endl;
+    this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
+    (this->Lacze).Rysuj();
+  }
+}

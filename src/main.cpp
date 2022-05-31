@@ -67,23 +67,19 @@ int main()
   Mars.AnimacjaTranslacji();
   cout << "Lazik: " << endl;
   cout << *(Mars.Wez_AktywnyLazik());
-  (Mars.Wez_Lacze()).Rysuj();
 
   cout << "Nacisnij klawisz ENTER, aby FSR wykonal przesuniecie." << endl;
   cin.ignore(100,'\n');
   
   cout << "Podaj kat obrotu" << endl;
   cin >> Temp;
-  Ob1.Zmien_KatDoObrotuSt(Temp);
+  Mars.Wez_AktywnyLazik()->Zmien_KatDoObrotuSt(Temp);
   cout << "Podaj predkosc obrotu" << endl;
   cin >> Temp;
-  Ob1.Zmien_PredkoscObrotu(Temp);
-  Ob1.ObrotLazika();
-  Ob1.Przelicz_i_Zapisz_Wierzcholki();
-  Lacze.Rysuj();
-
-  cout << "Polozenie: " << Ob1.Wez_Polozenie() << endl;
-  cout << "Kat orientacji: " << Ob1.Wez_KatOrientacjiSt() << endl;
+  Mars.Wez_AktywnyLazik()->Zmien_PredkoscObrotu(Temp);
+  Mars.AnimacjaObrotu();
+  cout << "Lazik po obrocie: " << endl;
+  cout << *(Mars.Wez_AktywnyLazik()) << endl;
   
   cout << "Nacisnij klawisz ENTER, aby zakonczyc." << endl;
   cin.ignore(100,'\n');

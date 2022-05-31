@@ -84,6 +84,8 @@ class Scena{
 
    void AnimacjaTranslacji ();
 
+   int LiczbaKlatekRotacji ();
+
    void AnimacjaObrotu ();
 
 };

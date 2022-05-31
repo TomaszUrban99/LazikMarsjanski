@@ -75,7 +75,6 @@ class ObiektGeom{
     */
     void ZmienKatOrientacjiSt (double NowyKatSt) {
         this->KatOrientacjiSt = NowyKatSt;
-        std::cout << "Kat: " << this->Wez_KatOrientacjiSt() << std::endl;
         ZmienMacierzRotacji(this->KatOrientacjiSt);
     }
 
@@ -87,7 +86,7 @@ class ObiektGeom{
     */
     void ZmienSkale (Wektor3D& NowaSkala) {this->Skala = NowaSkala;}
 
-    void ZmienMacierzRotacji(double AngleSt) { this->MacierzRotacji = Wez_MacierzRotacji().MacierzRotacjiZ(AngleSt);}
+    void ZmienMacierzRotacji(double AngleSt) { this->MacierzRotacji = this->MacierzRotacji.MacierzRotacjiZ(AngleSt);}
 
     void ZmienMacierzRotacji (Macierz3D& NowaMacierzRotacji) {this->MacierzRotacji = NowaMacierzRotacji;}
 
