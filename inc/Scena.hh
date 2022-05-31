@@ -3,9 +3,13 @@
 
 #include <memory>
 #include <list>
+#include <cmath>
 #include "Lazik.hh"
 #include "lacze_do_gnuplota.hh"
 #include "PowierzchniaMarsa.hh"
+
+constexpr int STALA_ANIMACJI_TRANSLACJA = 1000;
+constexpr int STALA_ANIMACJI_ROTACJA = 100;
 
 class Scena{
 
@@ -15,24 +19,39 @@ class Scena{
 
     public:
 
-    Scena (Lazik& PocztkowyAktywnyLazik)
-    {
+    /*!
+        \brief Konstruktor parametryczny klasy Scena
+        \param Lazik& PocztkowyAktywnyLazik - referencja do obiektu klasy
+        Lazik, ktory bedzie pierwszym aktywnym lazikiem na scenie
+    */
+    Scena (Lazik& PocztkowyAktywnyLazik){
         this->AktywnyLazik = std::make_shared<Lazik>(PocztkowyAktywnyLazik);
     }
 
-    void Zmien_AktywnyLazik(int NumerLazika) {
-        std::list<std::shared_ptr<ObiektGeom>>::iterator Iter = (this->ObiektySceny).begin();
-        
-        for ( int i = 0; i < NumerLazika; ++i) {++Iter;} 
-        
-        ObiektGeom *Temp2 = (*Iter).get();
-        Lazik *Temp = new Lazik();
-        Temp = static_cast<Lazik*>(Temp2);
-        (this->AktywnyLazik).reset(Temp);
-    }
+    /*!
+        \brief Metoda umożliwiająca wybór aktywnego łazika.
 
+        W pierwszej kolejności definiowany jest iterator dla listy ObiektySceny. Następnie
+        w pętli for wyszukiwany jest lazik znajdujacy się na miejscu określonym przez parametr
+        int NumerLazika. Następnie dla konkretnej wartości iteratora pozyskiwana jest referencja
+        do obiektu. Obiekt jest konwertowany z typu ObiektGeom do typu Lazik.
+
+        \param int NumerLazika - numer łazika na liście ObiektySceny
+        \retval BRAK;
+    */
+    void Zmien_AktywnyLazik(int NumerLazika);
+
+    /*!
+        \brief Metoda umożliwiająca zmianę łącza do programu GNUPLOT
+        \param PzG::LaczeDoGNUPlota& Nowe Lacze - referencja do łącza programu GNUPlot.
+        \retval BRAK
+    */
     void Zmien_Lacze(PzG::LaczeDoGNUPlota& NoweLacze) {this->Lacze = NoweLacze;}
 
+    /*!
+        \brief Metoda umożliwiająca zmianę listy obiektów klasy ObiektGeom znajdujących się
+        na scenie.
+    */
     void ZmienListe(std::list<std::shared_ptr<ObiektGeom>> NowaLista){this->ObiektySceny = NowaLista;}
 
     void DodajDoListyObiektow (ObiektGeom& Ob1){
@@ -60,6 +79,12 @@ class Scena{
    void Inicjalizuj_Lacze();
    
    void DodajDoListyRysowania();
+
+   int LiczbaKlatekTranslacja ();
+
+   void AnimacjaTranslacji ();
+
+   void AnimacjaObrotu ();
 
 };
 

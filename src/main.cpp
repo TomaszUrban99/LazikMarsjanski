@@ -8,8 +8,6 @@
 #include "Wektor3D.hh"
 #include "Scena.hh"
 
-
-
 using namespace std;
 
 int Wektor3D::Count = 0;
@@ -66,8 +64,7 @@ int main()
   cout << "Podaj szybkosc" << endl;
   cin >> Temp;
   (Mars.Wez_AktywnyLazik())->Zmien_Szybkosc(Temp);
-  (Mars.Wez_AktywnyLazik())->TranslacjaLazika();
-  (Mars.Wez_AktywnyLazik())->Przelicz_i_Zapisz_Wierzcholki();
+  Mars.AnimacjaTranslacji();
   cout << "Lazik: " << endl;
   cout << *(Mars.Wez_AktywnyLazik());
   (Mars.Wez_Lacze()).Rysuj();

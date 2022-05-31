@@ -1,5 +1,17 @@
 #include "Scena.hh"
 
+void Scena::Zmien_AktywnyLazik(int NumerLazika)
+{
+  std::list<std::shared_ptr<ObiektGeom>>::iterator Iter = (this->ObiektySceny).begin();
+        
+  for ( int i = 0; i < NumerLazika; ++i) {++Iter;} 
+        
+  ObiektGeom *Temp2 = (*Iter).get();
+  Lazik *Temp = new Lazik();
+  Temp = static_cast<Lazik*>(Temp2);
+  (this->AktywnyLazik).reset(Temp);
+}
+
 void Scena::Inicjalizuj_Lacze()
 {
   this->Lacze.ZmienTrybRys(PzG::TR_3D);
@@ -23,4 +35,22 @@ void Scena::DodajDoListyRysowania()
       ++Iter;
   }
  
+}
+
+int Scena::LiczbaKlatekTranslacja () {
+  return ceil (fabs(this->AktywnyLazik->Wez_OdlegloscDoPrzejechania())/fabs(this->AktywnyLazik->Wez_Szybkosc()))*STALA_ANIMACJI_TRANSLACJA;
+}
+
+void Scena::AnimacjaTranslacji()
+{
+  int LiczbaKlatek = this->LiczbaKlatekTranslacja();
+  double Odleglosc_Klatka = (fabs(this->AktywnyLazik->Wez_OdlegloscDoPrzejechania()))/LiczbaKlatek;
+
+  for ( int i = 0; i < LiczbaKlatek; ++i)
+  {
+    this->AktywnyLazik->Zmien_OdlegloscDoPrzejechania(Odleglosc_Klatka);
+    this->AktywnyLazik->TranslacjaLazika();
+    this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
+    (this->Lacze).Rysuj();
+  }
 }
