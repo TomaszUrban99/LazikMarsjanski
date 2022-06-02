@@ -9,7 +9,7 @@
 #include "PowierzchniaMarsa.hh"
 
 constexpr int STALA_ANIMACJI_TRANSLACJA = 1000;
-constexpr int STALA_ANIMACJI_ROTACJA = 10;
+constexpr int STALA_ANIMACJI_ROTACJA = 200;
 
 class Scena{
 
@@ -80,9 +80,9 @@ class Scena{
 
    void AnimacjaTranslacji ();
 
-   int LiczbaKlatekRotacji ();
+   int LiczbaKlatekRotacji (double KatDoObrotuSt, double PredkoscObrotu);
 
-   void AnimacjaObrotu ();
+   void AnimacjaObrotu (double KatDoObrotuSt, double PredkoscObrotu);
 
 };
 

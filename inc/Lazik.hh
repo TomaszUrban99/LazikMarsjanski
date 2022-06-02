@@ -9,7 +9,6 @@ class Lazik: public ObiektGeom{
 
     double OdlegloscDoPrzejechania = 0;
     double Szybkosc = 0;
-    double KatDoObrotuSt = 0;
     double PredkoscObrotu = 0;
 
     public:
@@ -51,9 +50,6 @@ class Lazik: public ObiektGeom{
     void Zmien_Szybkosc(double NowaSzybkosc){
         this->Szybkosc = NowaSzybkosc;}
     
-    void Zmien_KatDoObrotuSt(double NowyKatDoObrotuSt){
-        this->KatDoObrotuSt = NowyKatDoObrotuSt;}
-    
     void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
         this->PredkoscObrotu = NowaPredkoscObrotu;}
 
@@ -63,15 +59,12 @@ class Lazik: public ObiektGeom{
     double Wez_Szybkosc () const {return this->Szybkosc;}
     double& Wez_Szybkosc () {return this->Szybkosc;}
 
-    double Wez_KatDoObrotuSt () const {return this->KatDoObrotuSt;}
-    double& Wez_KatDoObrotuSt () {return this->KatDoObrotuSt;}
-
     double Wez_PredkoscObrotu () const {return this->PredkoscObrotu;}
     double& Wez_PredkoscObrotu () {return this->PredkoscObrotu;} 
 
    void TranslacjaLazika ();
 
-   void ObrotLazika ();
+   void ObrotLazika (double KatDoObrotuSt);
 
 };
 

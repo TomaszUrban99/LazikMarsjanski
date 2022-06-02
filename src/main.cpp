@@ -43,6 +43,7 @@ int main()
   while (Iter != Mars.Wez_Liste().end())
   {
     (**Iter).Przelicz_i_Zapisz_Wierzcholki();
+    std::cout << "Laziki: " << (**Iter) << endl;
     ++Iter;
   }
 
@@ -60,6 +61,8 @@ int main()
     {
       case 'j':
         
+        cout << "Aktywny lazik: " << endl;
+        cout << *(Mars.Wez_AktywnyLazik()) << endl;
         cout << "Podaj odleglosc" << endl;
         cin >> Temp;
         (Mars.Wez_AktywnyLazik())->Zmien_OdlegloscDoPrzejechania(Temp);
@@ -75,13 +78,14 @@ int main()
 
       case 'o':
 
+        double Temp2;
+
         cout << "Podaj kat obrotu" << endl;
         cin >> Temp;
-        Mars.Wez_AktywnyLazik()->Zmien_KatDoObrotuSt(Temp);
         cout << "Podaj predkosc obrotu" << endl;
-        cin >> Temp;
-        Mars.Wez_AktywnyLazik()->Zmien_PredkoscObrotu(Temp);
-        Mars.AnimacjaObrotu();
+        cin >> Temp2;
+        
+        Mars.AnimacjaObrotu(Temp, Temp2);
 
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
         cin.ignore(100,'\n');

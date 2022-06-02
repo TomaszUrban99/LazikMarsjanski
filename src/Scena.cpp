@@ -59,19 +59,18 @@ void Scena::DodajDoListyObiektow (ObiektGeom& Ob1){
   (this->ObiektySceny).push_back(Wsk);
 }
 
-int Scena::LiczbaKlatekRotacji(){
-  return ceill (fabs(this->AktywnyLazik->Wez_KatDoObrotuSt())/fabs(this->AktywnyLazik->Wez_PredkoscObrotu()))*STALA_ANIMACJI_ROTACJA;
+int Scena::LiczbaKlatekRotacji(double KatDoObrotuSt, double PredkoscObrotu){
+  return ceil (fabs(KatDoObrotuSt)/fabs(PredkoscObrotu))*STALA_ANIMACJI_ROTACJA;
 }
 
-void Scena::AnimacjaObrotu()
+void Scena::AnimacjaObrotu(double KatDoObrotuSt, double PredkoscObrotu)
 {
-  int LiczbaKlatek = LiczbaKlatekRotacji();
-  double Kat_Klatka = (fabs(this->AktywnyLazik->Wez_KatDoObrotuSt()))/LiczbaKlatek;
+  int LiczbaKlatek = this->LiczbaKlatekRotacji(KatDoObrotuSt, PredkoscObrotu);
+  double Kat_Klatka = (fabs(KatDoObrotuSt))/LiczbaKlatek;
 
   for (int i = 0; i < LiczbaKlatek; ++i)
   {
-    this->AktywnyLazik->Zmien_KatDoObrotuSt(Kat_Klatka);
-    this->AktywnyLazik->ObrotLazika();
+    this->AktywnyLazik->ObrotLazika(Kat_Klatka);
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
     (this->Lacze).Rysuj();
   }

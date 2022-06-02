@@ -53,7 +53,7 @@ class ObiektGeom{
        this->NazwaPliku_BrylaWzorcowa = PlikWzorcowy;
        this->NazwaPliku_PlikDoRysowania = PlikDoRysowania; 
    }
-   
+
    /*!
     \brief Metoda umożliwiająca zmianę identyfikatora określającego kolor
     wyświetlanego obiektu.
@@ -124,7 +124,7 @@ class ObiektGeom{
 
     std::string Wez_NazwaPlikDoRysowania () const {return this->NazwaPliku_PlikDoRysowania;} 
 
-    std::string& Wez_NazwaPlikDoRysowania () {return this->NazwaPliku_PlikDoRysowania;} 
+    std::string& Wez_NazwaPlikDoRysowania () {return this->NazwaPliku_PlikDoRysowania;}
 
     bool Przelicz_i_Zapisz_Wierzcholki ();
 
