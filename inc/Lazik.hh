@@ -43,7 +43,7 @@ class Lazik: public ObiektGeom{
        this->ZmienNazwaPliku_BrylaWzorcowa(PlikWzorcowy);
        this->ZmienNazwaPliku_PlikDoRysowania(PlikDoRysowania); 
    }
-
+   
    void Zmien_OdlegloscDoPrzejechania(double NowaOdleglosc){
     this->OdlegloscDoPrzejechania = NowaOdleglosc;}
     

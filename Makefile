@@ -23,7 +23,7 @@ ${OBJ}/Scena.o: src/Scena.cpp inc/Lazik.hh inc/lacze_do_gnuplota.hh
 ${OBJ}/Lazik.o: src/Lazik.cpp inc/ObiektGeom.hh inc/OperacjeMat.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/Lazik.o src/Lazik.cpp
 
-${OBJ}/ObiektGeom.o: src/ObiektGeom.cpp inc/Wektor3D.hh inc/Macierz3D.hh inc/TypyObiektow.hh
+${OBJ}/ObiektGeom.o: src/ObiektGeom.cpp inc/Wektor3D.hh inc/Macierz3D.hh inc/ObrysXY.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/ObiektGeom.o	src/ObiektGeom.cpp
 
 ${OBJ}/Wektor3D.o: src/Wektor3D.cpp inc/Wektor3D.hh

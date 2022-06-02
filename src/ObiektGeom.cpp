@@ -1,5 +1,16 @@
 #include "ObiektGeom.hh"
 
+void ObiektGeom::Znajdz_DolnyLewy(Wektor3D& WektorWspolrzednych)
+{
+
+    if(WektorWspolrzednych[0] < ((this->Obrys.Wez_Wierz_DolnyLewy())[0]))
+        {(this->Obrys.Wez_Wierz_DolnyLewy()[0]) = WektorWspolrzednych[0];}
+    
+    if(WektorWspolrzednych[1] < (this->Obrys.Wez_Wierz_DolnyLewy()[1]))
+        {(this->Obrys.Wez_Wierz_DolnyLewy()[1]) = WektorWspolrzednych[1];}
+
+}
+
 bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki()
 {
     std::ifstream Input((*this).NazwaPliku_BrylaWzorcowa);
@@ -24,6 +35,7 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki(std::istream& Input, std::ostream
         if(!Input.fail())
         {
             WspWierz = (this->MacierzRotacji)*((this->Skala)*WspWierz) +(this->Polozenie);
+            this->Znajdz_DolnyLewy(WspWierz);
             Output << WspWierz << std::endl;
            
             if(Output.fail()) {return false;}

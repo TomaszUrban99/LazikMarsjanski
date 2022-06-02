@@ -84,8 +84,10 @@ int main()
         cin >> Temp;
         cout << "Podaj predkosc obrotu" << endl;
         cin >> Temp2;
-        
+
+        cout << "Dolny lewy: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
         Mars.AnimacjaObrotu(Temp, Temp2);
+        cout << "Dolny lewy po rotacji: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
 
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
         cin.ignore(100,'\n');

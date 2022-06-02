@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include "Wektor3D.hh"
+#include "ObrysXY.hh"
 #include "Macierz3D.hh"
 
 class ObiektGeom{
@@ -21,9 +22,11 @@ class ObiektGeom{
     std::string NazwaPliku_BrylaWzorcowa;
     std::string NazwaPliku_PlikDoRysowania;
 
+    ObrysXY Obrys;
+    
     public:
 
-    ObiektGeom () = default;
+    ObiektGeom() = default;
 
     /*!
         \brief Kontruktor parametryczny obiektu klasy ObiektGeom.
@@ -125,6 +128,10 @@ class ObiektGeom{
     std::string Wez_NazwaPlikDoRysowania () const {return this->NazwaPliku_PlikDoRysowania;} 
 
     std::string& Wez_NazwaPlikDoRysowania () {return this->NazwaPliku_PlikDoRysowania;}
+
+    ObrysXY& Wez_ObrysXY () {return this->Obrys;}
+
+    void Znajdz_DolnyLewy(Wektor3D& WektorWspolrzednych);
 
     bool Przelicz_i_Zapisz_Wierzcholki ();
 
