@@ -4,8 +4,13 @@ void Lazik::TranslacjaLazika()
 {
     double KatRadiany = StopnieNaRadiany(this->Wez_KatOrientacjiSt());
 
-    Wektor3D NowePolozenie ( (this->Wez_Polozenie())[0]+Znak(this->Szybkosc)*(this->OdlegloscDoPrzejechania)*cos(KatRadiany),
-                    (this->Wez_Polozenie())[1]+Znak(this->Szybkosc)*(this->OdlegloscDoPrzejechania)*sin(KatRadiany), 0);
+    Wektor3D PrzemieszczenieXY (Znak(this->Szybkosc)*(this->OdlegloscDoPrzejechania)*cos(KatRadiany),
+                    Znak(this->Szybkosc)*(this->OdlegloscDoPrzejechania)*sin(KatRadiany), 0);
+    
+    this->Wez_ObrysXY().TranslacjaObrysu(PrzemieszczenieXY[0], PrzemieszczenieXY[1]);
+
+    Wektor3D NowePolozenie ( (this->Wez_Polozenie())[0]+PrzemieszczenieXY[0],
+                    (this->Wez_Polozenie())[1]+PrzemieszczenieXY[1], 0);
 
     this->ZmienPolozenie(NowePolozenie);
     this->Zmien_OdlegloscDoPrzejechania(ZERO);

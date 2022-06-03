@@ -131,7 +131,9 @@ class ObiektGeom{
 
     ObrysXY& Wez_ObrysXY () {return this->Obrys;}
 
-    void Znajdz_DolnyLewy(Wektor3D& WektorWspolrzednych);
+    void Znajdz_DolnyLewy (Wektor3D& WektorWspolrzednych);
+
+    void Znajdz_GornyPrawy (Wektor3D& WektorWspolrzednych);
 
     bool Przelicz_i_Zapisz_Wierzcholki ();
 

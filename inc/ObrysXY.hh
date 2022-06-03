@@ -41,6 +41,16 @@ class ObrysXY{
 
     /*___________________Metody pozostale_______________________*/
 
+    void TranslacjaObrysu (double PrzemieszczenieWspX, double PrzemieszczenieWspY)
+    {
+        Wektor2D Przemieszczenie;
+        
+        Przemieszczenie[0] = PrzemieszczenieWspX;
+        Przemieszczenie[1] = PrzemieszczenieWspY;
+        
+        this->Wez_Wierz_DolnyLewy() = this->Wez_Wierz_DolnyLewy() + Przemieszczenie;
+        this->Wez_Wierz_GornyPrawy() = this->Wez_Wierz_GornyPrawy() + Przemieszczenie;
+    }
 
 
 };
