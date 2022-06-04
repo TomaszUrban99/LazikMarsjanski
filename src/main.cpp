@@ -62,17 +62,13 @@ int main()
       case 'j':
         
         cout << "Aktywny lazik: " << endl;
-        cout << "Nazwa pliku do rysowania: " << (Mars.Wez_AktywnyLazik())->Wez_NazwaPlikBrylaWzorcowa() << endl;
         cout << *(Mars.Wez_AktywnyLazik()) << endl;
         cout << "Podaj odleglosc" << endl;
         cin >> Temp;
-        cout << "Nazwa pliku do rysowania: " << (Mars.Wez_AktywnyLazik())->Wez_NazwaPlikBrylaWzorcowa() << endl;
-        cout << "Nazwa pliku do rysowania: " << (Mars.Wez_AktywnyLazik())->Wez_NazwaPlikDoRysowania() << endl;
         Mars.Wez_AktywnyLazik()->Zmien_OdlegloscDoPrzejechania(Temp);
         cout << "Podaj szybkosc" << endl;
         cin >> Temp;
         Mars.Wez_AktywnyLazik()->Zmien_Szybkosc(Temp);
-        cout << "Nazwa pliku do rysowania: " << (Mars.Wez_AktywnyLazik())->Wez_NazwaPlikBrylaWzorcowa() << endl;
         Mars.AnimacjaTranslacji();
       
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;

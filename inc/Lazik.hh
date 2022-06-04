@@ -59,9 +59,10 @@ class Lazik: public ObiektGeom{
     this->OdlegloscDoPrzejechania = NowaOdleglosc;}
     
     void Zmien_Szybkosc(double& NowaSzybkosc){
-        std::cout << this->Wez_NazwaPlikBrylaWzorcowa() << std::endl;
+        std::string Temp = this->Wez_NazwaPlikBrylaWzorcowa();
         this->Szybkosc = NowaSzybkosc;
-        std::cout << this->Wez_NazwaPlikBrylaWzorcowa() << std::endl;}
+        this->ZmienNazwaPliku_BrylaWzorcowa(Temp);
+    }
     
     void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
         this->PredkoscObrotu = NowaPredkoscObrotu;}
