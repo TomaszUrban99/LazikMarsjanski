@@ -25,7 +25,7 @@ int main()
   Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
   Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
   Lazik Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
-  
+
   Scena Mars(Ob1);
 
   Mars.DodajDoListyObiektow(Ob1);
@@ -43,7 +43,7 @@ int main()
   while (Iter != Mars.Wez_Liste().end())
   {
     (**Iter).Przelicz_i_Zapisz_Wierzcholki();
-    std::cout << "Laziki: " << (**Iter) << endl;
+    cout << "Lazik: " << (**Iter) << endl;
     ++Iter;
   }
 
@@ -69,6 +69,7 @@ int main()
         cout << "Podaj szybkosc" << endl;
         cin >> Temp;
         (Mars.Wez_AktywnyLazik())->Zmien_Szybkosc(Temp);
+        cout << "Nazwa pliku do rysowania: " << (Mars.Wez_AktywnyLazik())->Wez_NazwaPlikDoRysowania() << endl;
         Mars.AnimacjaTranslacji();
       
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;

@@ -7,6 +7,10 @@
 #include "ObrysXY.hh"
 #include "Macierz3D.hh"
 
+enum TypObiektu { ID_ObiektGeom, ID_Lazik, ID_ProbkaRegolitu};
+
+enum TypKolizji { TK_BrakKolizji, TK_PrzejazdNadProbka, TK_Kolizja };
+
 class ObiektGeom{
 
     int KolorID;
@@ -56,6 +60,8 @@ class ObiektGeom{
        this->NazwaPliku_BrylaWzorcowa = PlikWzorcowy;
        this->NazwaPliku_PlikDoRysowania = PlikDoRysowania; 
    }
+
+   virtual enum TypObiektu Obiekt_ID () const {return ID_ObiektGeom;}
 
    /*!
     \brief Metoda umożliwiająca zmianę identyfikatora określającego kolor

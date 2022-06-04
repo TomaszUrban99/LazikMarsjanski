@@ -2,6 +2,7 @@
 #define LAZIK_HH
 
 #include <cmath>
+#include <memory>
 #include "ObiektGeom.hh"
 #include "OperacjeMat.hh"
 
@@ -12,6 +13,8 @@ class Lazik: public ObiektGeom{
     double PredkoscObrotu = 0;
 
     public:
+
+    virtual enum TypObiektu Obiekt_ID () const override {return ID_Lazik;}
 
     Lazik() = default;
 
@@ -43,7 +46,9 @@ class Lazik: public ObiektGeom{
        this->ZmienNazwaPliku_BrylaWzorcowa(PlikWzorcowy);
        this->ZmienNazwaPliku_PlikDoRysowania(PlikDoRysowania); 
    }
-   
+
+   ~Lazik() = default;
+
    void Zmien_OdlegloscDoPrzejechania(double NowaOdleglosc){
     this->OdlegloscDoPrzejechania = NowaOdleglosc;}
     
@@ -60,7 +65,9 @@ class Lazik: public ObiektGeom{
     double& Wez_Szybkosc () {return this->Szybkosc;}
 
     double Wez_PredkoscObrotu () const {return this->PredkoscObrotu;}
-    double& Wez_PredkoscObrotu () {return this->PredkoscObrotu;} 
+    double& Wez_PredkoscObrotu () {return this->PredkoscObrotu;}
+
+    bool CzyKolizja ( std::shared_ptr<Lazik>& Wsk_Lazik ) const;
 
    void TranslacjaLazika ();
 
