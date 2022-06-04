@@ -24,6 +24,8 @@ class SWektor {
     SWektor<STyp,SWymiar> operator * (STyp Mnoznik) const;
     SWektor<STyp,SWymiar> operator + (const SWektor<STyp, SWymiar> &Wektor2) const;
     SWektor<STyp,SWymiar> operator / (STyp Dzielnik) const;
+    bool operator <= (const SWektor<STyp, SWymiar> &Wektor2) const;
+    bool operator >= (const SWektor<STyp, SWymiar> &Wektor2) const;
 
     double operator * (const SWektor<STyp,SWymiar> Wektor2) const;
     double modul() const;
@@ -74,6 +76,36 @@ double SWektor<STyp, SWymiar>::operator * (const SWektor<STyp,SWymiar> Wektor2) 
 
   for (unsigned int Ind = 0; Ind < SWymiar; ++Ind) Wynik = Wynik + ((*this)[Ind] * Wektor2[Ind]);
   return Wynik;
+}
+
+template <typename STyp, int SWymiar>
+bool SWektor<STyp, SWymiar>::operator <= (const SWektor<STyp, SWymiar> &Wektor2) const
+{
+  int IleMniejszychRownych = 0;
+
+  for (int i = 0; i < SWymiar; ++i)
+  {
+    if ((*this)[i] <= Wektor2[i] ) ++IleMniejszychRownych;
+  }
+
+  if (SWymiar != IleMniejszychRownych) return false;
+  
+  return true;
+}
+
+template <typename STyp, int SWymiar>
+bool SWektor<STyp, SWymiar>::operator >= (const SWektor<STyp, SWymiar> &Wektor2) const
+{
+  int IleWiekszychRownych = 0;
+
+  for (int i = 0; i < SWymiar; ++i)
+  {
+    if ((*this)[i] >= Wektor2[i] ) ++IleWiekszychRownych;
+  }
+
+  if (SWymiar != IleWiekszychRownych) return false;
+  
+  return true;
 }
 
 template <typename STyp, int SWymiar>

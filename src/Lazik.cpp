@@ -1,5 +1,10 @@
 #include "Lazik.hh"
 
+enum TypKolizji Lazik::CzyKolizja (std::shared_ptr<Lazik>& Wsk_Lazik) const
+{
+    if ()
+}
+
 void Lazik::TranslacjaLazika()
 {
     double KatRadiany = StopnieNaRadiany(this->Wez_KatOrientacjiSt());
