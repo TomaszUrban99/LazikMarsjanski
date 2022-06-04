@@ -48,8 +48,8 @@ class ObiektGeom{
     */
    ObiektGeom( int Kolor, double PoczatkowyKatOrientacjiSt, 
                 Wektor3D& PoczatkowePolozenie, Wektor3D& NowaSkala,
-                std::string NowaNazwaObiektu, std::string PlikWzorcowy, 
-                std::string PlikDoRysowania)
+                std::string& NowaNazwaObiektu, std::string& PlikWzorcowy, 
+                std::string& PlikDoRysowania)
    {
        this->KolorID = Kolor;
        this->KatOrientacjiSt = PoczatkowyKatOrientacjiSt;
@@ -99,11 +99,11 @@ class ObiektGeom{
 
     void ZmienMacierzRotacji (Macierz3D& NowaMacierzRotacji) {this->MacierzRotacji = NowaMacierzRotacji;}
 
-    void ZmienNazwaObiektu (std::string NowaNazwaObiektu) {this->NazwaObiektu = NowaNazwaObiektu;}
+    void ZmienNazwaObiektu (std::string& NowaNazwaObiektu) {this->NazwaObiektu = NowaNazwaObiektu;}
 
-    void ZmienNazwaPliku_BrylaWzorcowa (std::string NowaNazwaPliku){this->NazwaPliku_BrylaWzorcowa = NowaNazwaPliku;}
+    void ZmienNazwaPliku_BrylaWzorcowa (std::string& NowaNazwaPliku){this->NazwaPliku_BrylaWzorcowa = NowaNazwaPliku;}
 
-    void ZmienNazwaPliku_PlikDoRysowania (std::string NowaNazwaPliku){this->NazwaPliku_PlikDoRysowania = NowaNazwaPliku;}
+    void ZmienNazwaPliku_PlikDoRysowania (std::string& NowaNazwaPliku){this->NazwaPliku_PlikDoRysowania = NowaNazwaPliku;}
     
     int Wez_KolorID() const {return this->KolorID;} 
     
@@ -126,12 +126,12 @@ class ObiektGeom{
     std::string Wez_NazwaObiektu() const {return this->NazwaObiektu;}
 
     std::string& Wez_NazwaObiektu() {return this->NazwaObiektu;}
-
+    
     std::string Wez_NazwaPlikBrylaWzorcowa () const {return this->NazwaPliku_BrylaWzorcowa;}
 
     std::string& Wez_NazwaPlikBrylaWzorcowa () {return this->NazwaPliku_BrylaWzorcowa;}
 
-    std::string Wez_NazwaPlikDoRysowania () const {return this->NazwaPliku_PlikDoRysowania;} 
+    std::string Wez_NazwaPlikDoRysowania () const {return this->NazwaPliku_PlikDoRysowania;}
 
     std::string& Wez_NazwaPlikDoRysowania () {return this->NazwaPliku_PlikDoRysowania;}
 

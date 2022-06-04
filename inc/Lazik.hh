@@ -14,9 +14,12 @@ class Lazik: public ObiektGeom{
 
     public:
 
-    virtual enum TypObiektu Obiekt_ID () const override {return ID_Lazik;}
+    enum TypObiektu Obiekt_ID () const {return ID_Lazik;}
 
-    Lazik() = default;
+    Lazik() 
+    {
+        std::cout << "Collllere" << std::endl;
+    }
 
     /*!
         \brief Kontruktor parametryczny obiektu klasy ObiektGeom.
@@ -47,13 +50,18 @@ class Lazik: public ObiektGeom{
        this->ZmienNazwaPliku_PlikDoRysowania(PlikDoRysowania); 
    }
 
-   ~Lazik() = default;
+   Lazik(ObiektGeom&)
+   {
+       std::cout << "Gender" << std::endl;
+   }
 
    void Zmien_OdlegloscDoPrzejechania(double NowaOdleglosc){
     this->OdlegloscDoPrzejechania = NowaOdleglosc;}
     
-    void Zmien_Szybkosc(double NowaSzybkosc){
-        this->Szybkosc = NowaSzybkosc;}
+    void Zmien_Szybkosc(double& NowaSzybkosc){
+        std::cout << this->Wez_NazwaPlikBrylaWzorcowa() << std::endl;
+        this->Szybkosc = NowaSzybkosc;
+        std::cout << this->Wez_NazwaPlikBrylaWzorcowa() << std::endl;}
     
     void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
         this->PredkoscObrotu = NowaPredkoscObrotu;}
