@@ -149,9 +149,13 @@ class ObiektGeom{
 
     void Znajdz_GornyPrawy (Wektor3D& WektorWspolrzednych);
 
+    bool WyznaczObrysObiektu ();
+
     bool Przelicz_i_Zapisz_Wierzcholki ();
 
-    bool Przelicz_i_Zapisz_Wierzcholki (std::istream& Input, std::ostream& Output);  
+    bool Przelicz_i_Zapisz_Wierzcholki (std::istream& Input, std::ostream& Output);
+
+    Wektor2D KonwersjaNaDwuwymiarowy(Wektor3D& Wektor2) const;
 };
 
 std::ostream& operator<<(std::ostream& Output, ObiektGeom& DanyLazik);

@@ -78,11 +78,13 @@ class Scena{
 
    int LiczbaKlatekTranslacja ();
 
-   void AnimacjaTranslacji ();
+   bool AnimacjaTranslacji ();
 
    int LiczbaKlatekRotacji (double KatDoObrotuSt, double PredkoscObrotu);
 
    void AnimacjaObrotu (double KatDoObrotuSt, double PredkoscObrotu);
+
+   bool Kolizja_SprawdzLaziki();
 
 };
 

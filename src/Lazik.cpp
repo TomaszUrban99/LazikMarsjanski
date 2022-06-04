@@ -1,8 +1,14 @@
 #include "Lazik.hh"
 
-enum TypKolizji Lazik::CzyKolizja (std::shared_ptr<Lazik>& Wsk_Lazik) const
+enum TypKolizji Lazik::CzyKolizja (std::shared_ptr<Lazik>& Wsk_Lazik)
 {
-    if ()
+    if (this->Wez_ObrysXY().Wez_Wierz_GornyPrawy() <= Wsk_Lazik->Wez_ObrysXY().Wez_Wierz_GornyPrawy()){ 
+        if (this->Wez_ObrysXY().Wez_Wierz_GornyPrawy() >= Wsk_Lazik->Wez_ObrysXY().Wez_Wierz_DolnyLewy()) return TK_Kolizja;}
+
+    if (this->Wez_ObrysXY().Wez_Wierz_DolnyLewy() <= Wsk_Lazik->Wez_ObrysXY().Wez_Wierz_GornyPrawy()){
+        if (this->Wez_ObrysXY().Wez_Wierz_DolnyLewy() >= Wsk_Lazik->Wez_ObrysXY().Wez_Wierz_DolnyLewy()) return TK_Kolizja;}
+    
+    return TK_BrakKolizji;
 }
 
 void Lazik::TranslacjaLazika()

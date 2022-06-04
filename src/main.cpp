@@ -43,7 +43,11 @@ int main()
   while (Iter != Mars.Wez_Liste().end())
   {
     (**Iter).Przelicz_i_Zapisz_Wierzcholki();
+    (**Iter).WyznaczObrysObiektu();
     cout << "Lazik: " << (**Iter) << endl;
+    cout << "Obrys lazikow: " << endl;
+    cout << (**Iter).Wez_ObrysXY().Wez_Wierz_DolnyLewy();
+    cout << (**Iter).Wez_ObrysXY().Wez_Wierz_GornyPrawy();
     ++Iter;
   }
 
@@ -65,11 +69,13 @@ int main()
         cout << *(Mars.Wez_AktywnyLazik()) << endl;
         cout << "Podaj odleglosc" << endl;
         cin >> Temp;
-        Mars.Wez_AktywnyLazik()->Zmien_OdlegloscDoPrzejechania(Temp);
+        cout << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikDoRysowania();
+        (*(Mars.Wez_AktywnyLazik())).Zmien_OdlegloscDoPrzejechania(Temp);
         cout << "Podaj szybkosc" << endl;
+        cout << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikDoRysowania();
         cin >> Temp;
         Mars.Wez_AktywnyLazik()->Zmien_Szybkosc(Temp);
-        Mars.AnimacjaTranslacji();
+        if(!Mars.AnimacjaTranslacji()) { cout << "Kolizja- ruch zatrzymany" << endl;}
       
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
         cin.ignore(100,'\n');

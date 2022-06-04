@@ -1,0 +1,251 @@
+g++ -c -g -std=c++11 -iquote inc -Wall -pedantic -o ./obj/ObiektGeom.o	src/ObiektGeom.cpp
+g++ -o ./test_lazika/test_lazikap ./obj/main.o ./obj/Wektor3D.o ./obj/Macierz3D.o ./obj/OperacjeMat.o ./obj/ObiektGeom.o ./obj/lacze_do_gnuplota.o ./obj/PowierzchniaMarsa.o ./obj/Lazik.o ./obj/Scena.o
+./test_lazika/test_lazikap
+Dolny lewy wsp:  0 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+Dolny lewy wsp:  -5 -5
+To pobralem 0 -5 5
+Po konwersji:  0 -5
+Dolny lewy wsp:  0 -5
+to pobralem:  -5 -5 10
+Dolny lewy wsp:  -5 -5
+to pobralem:  -5 5 10
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 -5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  5 -5 10
+Dolny lewy wsp:  -5 -5
+to pobralem:  5 5 10
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 -5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  5 -5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  5 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 -5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  5 -5 0
+Dolny lewy wsp:  -5 -5
+to pobralem:  5 5 0
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 -5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  -5 -5 0
+Dolny lewy wsp:  -5 -5
+to pobralem:  -5 5 0
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 -5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  -5 -5 10
+Dolny lewy wsp:  -5 -5
+to pobralem:  -5 5 10
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Dolny lewy wsp:  -5 -5
+to pobralem:  0 5 5
+Lazik: Nazwa Lazika: FSR
+Polozenie lazika:  0 0 0
+Kat orientacji lazika [st]: 0
+
+Obrys lazikow: 
+ -5 -5 5 5Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+To pobralem 50 45 5
+Po konwersji:  50 45
+Dolny lewy wsp:  50 45
+to pobralem:  45 45 10
+Dolny lewy wsp:  45 45
+to pobralem:  45 55 10
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 45 5
+Dolny lewy wsp:  45 45
+to pobralem:  55 45 10
+Dolny lewy wsp:  45 45
+to pobralem:  55 55 10
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 45 5
+Dolny lewy wsp:  45 45
+to pobralem:  55 45 5
+Dolny lewy wsp:  45 45
+to pobralem:  55 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 45 5
+Dolny lewy wsp:  45 45
+to pobralem:  55 45 0
+Dolny lewy wsp:  45 45
+to pobralem:  55 55 0
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 45 5
+Dolny lewy wsp:  45 45
+to pobralem:  45 45 0
+Dolny lewy wsp:  45 45
+to pobralem:  45 55 0
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 45 5
+Dolny lewy wsp:  45 45
+to pobralem:  45 45 10
+Dolny lewy wsp:  45 45
+to pobralem:  45 55 10
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Dolny lewy wsp:  45 45
+to pobralem:  50 55 5
+Lazik: Nazwa Lazika: Curiosity
+Polozenie lazika:  50 50 0
+Kat orientacji lazika [st]: 0
+
+Obrys lazikow: 
+ 45 45 55 55Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+Dolny lewy wsp:  0 0
+To pobralem 20 15 5
+Po konwersji:  20 15
+Dolny lewy wsp:  20 15
+to pobralem:  15 15 10
+Dolny lewy wsp:  15 15
+to pobralem:  15 25 10
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 15 5
+Dolny lewy wsp:  15 15
+to pobralem:  25 15 10
+Dolny lewy wsp:  15 15
+to pobralem:  25 25 10
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 15 5
+Dolny lewy wsp:  15 15
+to pobralem:  25 15 5
+Dolny lewy wsp:  15 15
+to pobralem:  25 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 15 5
+Dolny lewy wsp:  15 15
+to pobralem:  25 15 0
+Dolny lewy wsp:  15 15
+to pobralem:  25 25 0
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 15 5
+Dolny lewy wsp:  15 15
+to pobralem:  15 15 0
+Dolny lewy wsp:  15 15
+to pobralem:  15 25 0
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 15 5
+Dolny lewy wsp:  15 15
+to pobralem:  15 15 10
+Dolny lewy wsp:  15 15
+to pobralem:  15 25 10
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Dolny lewy wsp:  15 15
+to pobralem:  20 25 5
+Lazik: Nazwa Lazika: Perservarance
+Polozenie lazika:  20 20 0
+Kat orientacji lazika [st]: 0
+
+Obrys lazikow: 
+ 15 15 25 25
+Start programu gnuplot
+
+Nacisnij klawisz ENTER, aby przejsc dalej
+Menu programu lazik marsjanski
+j - jazda na wprost
+o - obrot lazika
+d - wyswietl aktywny lazik
+s - selekcja lazika
+k - koniec programu
+Podaj komende (m - wyswietl menu) 

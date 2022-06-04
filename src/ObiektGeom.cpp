@@ -1,5 +1,33 @@
 #include "ObiektGeom.hh"
 
+bool ObiektGeom::WyznaczObrysObiektu()
+{
+    Wektor3D WspTymcz;
+    Wektor2D WspTymcz2;
+    
+    std::ifstream Input(this->Wez_NazwaPlikDoRysowania());
+
+    Input >> WspTymcz;
+
+    WspTymcz2 = this->KonwersjaNaDwuwymiarowy(WspTymcz);
+
+    this->Obrys.Zmien_Wierz_DolnyLewy(WspTymcz2);
+    this->Obrys.Zmien_Wierz_GornyPrawy(WspTymcz2);
+    
+    do
+    {
+        this->Znajdz_DolnyLewy(WspTymcz);
+        this->Znajdz_GornyPrawy(WspTymcz);
+        
+        Input >> WspTymcz;
+
+    } while (!Input.fail());
+    
+    if(!Input.eof()) return false;
+
+    return true;
+}
+
 void ObiektGeom::Znajdz_GornyPrawy(Wektor3D& WektorWspolrzednych)
 {
     if(WektorWspolrzednych[0] > ((this->Obrys.Wez_Wierz_GornyPrawy())[0]))
@@ -13,10 +41,10 @@ void ObiektGeom::Znajdz_DolnyLewy(Wektor3D& WektorWspolrzednych)
 {
 
     if(WektorWspolrzednych[0] < ((this->Obrys.Wez_Wierz_DolnyLewy())[0]))
-        {(this->Obrys.Wez_Wierz_DolnyLewy()[0]) = WektorWspolrzednych[0];}
+        {(this->Obrys.Wez_Wierz_DolnyLewy())[0] = WektorWspolrzednych[0];}
     
     if(WektorWspolrzednych[1] < (this->Obrys.Wez_Wierz_DolnyLewy()[1]))
-        {(this->Obrys.Wez_Wierz_DolnyLewy()[1]) = WektorWspolrzednych[1];}
+        {(this->Obrys.Wez_Wierz_DolnyLewy())[1] = WektorWspolrzednych[1];}
 
 }
 
@@ -60,6 +88,14 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki(std::istream& Input, std::ostream
     if(!Input.eof()){return false;}
      
     return true;
+}
+
+Wektor2D ObiektGeom::KonwersjaNaDwuwymiarowy(Wektor3D& Wektor2) const
+{
+    Wektor2D NowyWektor;
+    for (uint i = 0; i < 2; ++i) {NowyWektor[i] = Wektor2[i];}
+
+    return NowyWektor;
 }
 
 std::ostream& operator<<(std::ostream& Output, ObiektGeom& DanyLazik)

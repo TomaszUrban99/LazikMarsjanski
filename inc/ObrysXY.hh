@@ -52,9 +52,6 @@ class ObrysXY{
         this->Wez_Wierz_GornyPrawy() = this->Wez_Wierz_GornyPrawy() + Przemieszczenie;
     }
 
-    bool CzyZawieraSie 
-
-
 };
 
 #endif

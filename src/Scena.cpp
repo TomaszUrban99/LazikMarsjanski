@@ -10,6 +10,22 @@ void Scena::Zmien_AktywnyLazik(int NumerLazika)
   this->AktywnyLazik = std::static_pointer_cast<Lazik>(*Iter);
 }
 
+bool Scena::Kolizja_SprawdzLaziki()
+{
+  std::list<std::shared_ptr<ObiektGeom>>::iterator Iter = (this->ObiektySceny.begin());
+  
+  for (long unsigned int i = 0; i < (this->ObiektySceny.size()); ++i)
+  {
+    std::shared_ptr<Lazik> TempLazik = std::static_pointer_cast<Lazik>(*Iter);
+    if( this->AktywnyLazik != TempLazik){
+      if(this->AktywnyLazik->CzyKolizja(TempLazik) == TK_Kolizja) return true;
+    }
+    ++Iter;
+  }
+
+  return false;
+}
+
 void Scena::Inicjalizuj_Lacze()
 {
   this->Lacze.ZmienTrybRys(PzG::TR_3D);
@@ -39,7 +55,7 @@ int Scena::LiczbaKlatekTranslacja () {
   return ceil (fabs(this->AktywnyLazik->Wez_OdlegloscDoPrzejechania())/fabs(this->AktywnyLazik->Wez_Szybkosc()))*STALA_ANIMACJI_TRANSLACJA;
 }
 
-void Scena::AnimacjaTranslacji()
+bool Scena::AnimacjaTranslacji()
 {
   int LiczbaKlatek = this->LiczbaKlatekTranslacja();
   double Odleglosc_Klatka = (fabs(this->AktywnyLazik->Wez_OdlegloscDoPrzejechania()))/LiczbaKlatek;
@@ -48,9 +64,19 @@ void Scena::AnimacjaTranslacji()
   {
     this->AktywnyLazik->Zmien_OdlegloscDoPrzejechania(Odleglosc_Klatka);
     this->AktywnyLazik->TranslacjaLazika();
+    
+    if(this->Kolizja_SprawdzLaziki()){
+      double Temp = (-1)*(this->AktywnyLazik->Wez_Szybkosc());
+      (this->AktywnyLazik)->Zmien_Szybkosc(Temp);
+      this->AktywnyLazik->Zmien_OdlegloscDoPrzejechania(5*Odleglosc_Klatka);
+      this->AktywnyLazik->TranslacjaLazika();
+      return false;
+    }
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
     (this->Lacze).Rysuj();
   }
+
+  return true;
 }
 
 void Scena::DodajDoListyObiektow (ObiektGeom& Ob1){
