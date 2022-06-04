@@ -7,8 +7,16 @@
 #include "ObrysXY.hh"
 #include "Macierz3D.hh"
 
+/*!
+    \brief Typ wyliczeniowy TypObiektu definiujący możliwe rodzaje obiektow
+    znajdujacych się na scenie.
+*/
 enum TypObiektu { ID_ObiektGeom, ID_Lazik, ID_ProbkaRegolitu};
 
+/*!
+    \brief Typ wyliczeniowy TypKolizji definiujący możliwe rodzaje kolizji
+    zachodzące pomiędzy obiektami klas pochodnych klasy ObiektGeom
+*/
 enum TypKolizji { TK_BrakKolizji, TK_PrzejazdNadProbka, TK_Kolizja };
 
 class ObiektGeom{

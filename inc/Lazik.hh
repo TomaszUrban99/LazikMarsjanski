@@ -75,12 +75,12 @@ class Lazik: public ObiektGeom{
 
     double Wez_PredkoscObrotu () const {return this->PredkoscObrotu;}
     double& Wez_PredkoscObrotu () {return this->PredkoscObrotu;}
-
+    
     bool CzyKolizja ( std::shared_ptr<Lazik>& Wsk_Lazik ) const;
-
-   void TranslacjaLazika ();
-
-   void ObrotLazika (double KatDoObrotuSt);
+    
+    void TranslacjaLazika ();
+    
+    void ObrotLazika (double KatDoObrotuSt);
 
 };
 
