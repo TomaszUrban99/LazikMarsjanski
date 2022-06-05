@@ -45,4 +45,6 @@ class ProbkaRegolitu: public ObiektGeom{
     virtual enum TypObiektu Obiekt_ID () const override {return ID_ProbkaRegolitu;}
 };
 
+std::ostream& operator<<(std::ostream& Output, const ProbkaRegolitu Probka);
+
 #endif

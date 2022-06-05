@@ -24,6 +24,7 @@ int main()
   Wektor3D SkalaProbka (5, 5, 2);
   Wektor3D PolozenieProbka1 (-20, -20, 0);
   Wektor3D PolozenieProbka2 (-30, -30, 0);
+  std::shared_ptr<ProbkaRegolitu> TempProbka;
 
   char klawisz[2] = "m";
 
@@ -72,6 +73,7 @@ int main()
   while((klawisz[0])!='k')
   {
     double Temp;
+    int i = 0;
 
     switch(klawisz[0])
     {
@@ -126,6 +128,7 @@ int main()
         cout << "d - wyswietl aktywny lazik" << endl;
         cout << "s - selekcja lazika" << endl;
         cout << "k - koniec programu" << endl;
+        cout << "l - wyswietl liste probek na scenie" << endl;
       
       break;
 
@@ -144,6 +147,24 @@ int main()
         cout << "Aktywny lazik: " << endl;
         cout << *(Mars.Wez_AktywnyLazik()) << endl;
       
+      break;
+
+      case 'l':
+
+      Iter = Mars.Wez_Liste().begin();
+      cout << "Lista probek znajdujacych sie na scenie: " << std::endl;
+      
+      while (Iter != Mars.Wez_Liste().end())
+      {
+        if ((*Iter)->Obiekt_ID() == ID_ProbkaRegolitu)
+        {
+          TempProbka = static_pointer_cast<ProbkaRegolitu>(*Iter);
+          cout << "Probka " << ++i <<": " << (*TempProbka);
+         
+        } 
+        ++Iter;
+      }
+
       break;
 
       default :
