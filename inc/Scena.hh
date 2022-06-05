@@ -7,6 +7,7 @@
 #include "Lazik.hh"
 #include "lacze_do_gnuplota.hh"
 #include "PowierzchniaMarsa.hh"
+#include "ProbkaRegolitu.hh"
 
 constexpr int STALA_ANIMACJI_TRANSLACJA = 1000;
 constexpr int STALA_ANIMACJI_ROTACJA = 200;
@@ -54,7 +55,21 @@ class Scena{
     */
     void ZmienListe(std::list<std::shared_ptr<ObiektGeom>> NowaLista){this->ObiektySceny = NowaLista;}
 
-    void DodajDoListyObiektow (ObiektGeom& Ob1);
+    /*!
+        \brief Metoda umożliwiająca dodanie do listy obiektów znajdujących się na scenie obiektu
+        klasy Lazik
+        \param Lazik& Ob1 - referencja do obiektu klasy Lazik
+        \retval BRAK
+    */
+    void DodajDoListyObiektow (Lazik& Ob1);
+
+    /*!
+        \brief Metoda umożliwiająća dodanie do listy obiektów znajdujących się na scenie obiektu klasy
+        ProbkaRegolitu
+        \param ProbkaRegolitu& Ob1 - referencja do obiektu klasy ProbkaRegolitu
+        \retval BRAK
+    */
+    void DodajDoListyObiektow (ProbkaRegolitu& Ob1);
 
     std::shared_ptr<Lazik> Wez_AktywnyLazik () {return this->AktywnyLazik;}
     
@@ -76,7 +91,7 @@ class Scena{
    
    void DodajDoListyRysowania();
 
-   int LiczbaKlatekTranslacja ();
+   int LiczbaKlatekTranslacja () const;
 
    bool AnimacjaTranslacji ();
 

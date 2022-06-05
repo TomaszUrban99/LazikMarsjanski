@@ -14,7 +14,7 @@ class Lazik: public ObiektGeom{
 
     public:
 
-    enum TypObiektu Obiekt_ID () const {return ID_Lazik;}
+    virtual enum TypObiektu Obiekt_ID () const override {return ID_Lazik;}
 
     Lazik() = default;
 
@@ -34,32 +34,32 @@ class Lazik: public ObiektGeom{
     */
    Lazik(int Kolor, double PoczatkowyKatOrientacjiSt, 
                 Wektor3D& PoczatkowePolozenie, Wektor3D& NowaSkala,
-                std::string NowaNazwaObiektu, std::string PlikWzorcowy, 
-                std::string PlikDoRysowania)
+                const std::string NowaNazwaObiektu, const std::string PlikWzorcowy, 
+                const std::string PlikDoRysowania)
    {
        this->Zmien_KolorID(Kolor);
+       this->Szybkosc = 0;
+       this->PredkoscObrotu = 0;
+       this->OdlegloscDoPrzejechania = 0;
        this->ZmienKatOrientacjiSt(PoczatkowyKatOrientacjiSt);
        this->ZmienMacierzRotacji(PoczatkowyKatOrientacjiSt);
        this->ZmienPolozenie(PoczatkowePolozenie);
        this->ZmienSkale(NowaSkala);
-       this->ZmienNazwaObiektu (NowaNazwaObiektu);
+       this->ZmienNazwaObiektu(NowaNazwaObiektu);
        this->ZmienNazwaPliku_BrylaWzorcowa(PlikWzorcowy);
        this->ZmienNazwaPliku_PlikDoRysowania(PlikDoRysowania); 
    }
 
-   Lazik(Lazik&) = default;
+   Lazik(const Lazik&) = default;
 
    void Zmien_OdlegloscDoPrzejechania(double NowaOdleglosc){
-    this->OdlegloscDoPrzejechania = NowaOdleglosc;}
+    (this->OdlegloscDoPrzejechania) = NowaOdleglosc;}
     
-    void Zmien_Szybkosc(double& NowaSzybkosc){
-        std::string Temp = this->Wez_NazwaPlikBrylaWzorcowa();
+    void Zmien_Szybkosc(double NowaSzybkosc){
         this->Szybkosc = NowaSzybkosc;
-        this->ZmienNazwaPliku_BrylaWzorcowa(Temp);
     }
-    
     void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
-        this->PredkoscObrotu = NowaPredkoscObrotu;}
+        (this->PredkoscObrotu) = NowaPredkoscObrotu;}
 
     double Wez_OdlegloscDoPrzejechania () const {return this->OdlegloscDoPrzejechania;}
     double& Wez_OdlegloscDoPrzejechania () {return this->OdlegloscDoPrzejechania;}

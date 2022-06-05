@@ -54,10 +54,10 @@ class ObiektGeom{
         \param std::string PlikDoRysowania - nazwa pliku, do którego będą zapisywane
         wyliczone współrzędne
     */
-   ObiektGeom( int Kolor, double PoczatkowyKatOrientacjiSt, 
+  ObiektGeom( int Kolor, double PoczatkowyKatOrientacjiSt, 
                 Wektor3D& PoczatkowePolozenie, Wektor3D& NowaSkala,
-                std::string& NowaNazwaObiektu, std::string& PlikWzorcowy, 
-                std::string& PlikDoRysowania)
+                const std::string NowaNazwaObiektu, const std::string PlikWzorcowy, 
+                const std::string PlikDoRysowania)
    {
        this->KolorID = Kolor;
        this->KatOrientacjiSt = PoczatkowyKatOrientacjiSt;
@@ -69,7 +69,9 @@ class ObiektGeom{
        this->NazwaPliku_PlikDoRysowania = PlikDoRysowania; 
    }
 
-   virtual enum TypObiektu Obiekt_ID () const {return ID_ObiektGeom;}
+   ObiektGeom(const ObiektGeom&) = default;
+
+   virtual enum TypObiektu Obiekt_ID () const = 0;
 
    /*!
     \brief Metoda umożliwiająca zmianę identyfikatora określającego kolor
@@ -107,11 +109,12 @@ class ObiektGeom{
 
     void ZmienMacierzRotacji (Macierz3D& NowaMacierzRotacji) {this->MacierzRotacji = NowaMacierzRotacji;}
 
-    void ZmienNazwaObiektu (std::string& NowaNazwaObiektu) {this->NazwaObiektu = NowaNazwaObiektu;}
+    void ZmienNazwaObiektu (const std::string NowaNazwaObiektu) {this->NazwaObiektu = NowaNazwaObiektu;}
 
-    void ZmienNazwaPliku_BrylaWzorcowa (std::string& NowaNazwaPliku){this->NazwaPliku_BrylaWzorcowa = NowaNazwaPliku;}
+    void ZmienNazwaPliku_BrylaWzorcowa (const std::string NowaNazwaPliku){
+        (this->NazwaPliku_BrylaWzorcowa) = NowaNazwaPliku;}
 
-    void ZmienNazwaPliku_PlikDoRysowania (std::string& NowaNazwaPliku){this->NazwaPliku_PlikDoRysowania = NowaNazwaPliku;}
+    void ZmienNazwaPliku_PlikDoRysowania (const std::string NowaNazwaPliku){(this->NazwaPliku_PlikDoRysowania) = NowaNazwaPliku;}
     
     int Wez_KolorID() const {return this->KolorID;} 
     

@@ -51,14 +51,14 @@ void Scena::DodajDoListyRysowania()
  
 }
 
-int Scena::LiczbaKlatekTranslacja () {
+int Scena::LiczbaKlatekTranslacja () const {
   return ceil (fabs(this->AktywnyLazik->Wez_OdlegloscDoPrzejechania())/fabs(this->AktywnyLazik->Wez_Szybkosc()))*STALA_ANIMACJI_TRANSLACJA;
 }
 
 bool Scena::AnimacjaTranslacji()
 {
   int LiczbaKlatek = this->LiczbaKlatekTranslacja();
-  double Odleglosc_Klatka = (fabs(this->AktywnyLazik->Wez_OdlegloscDoPrzejechania()))/LiczbaKlatek;
+  double Odleglosc_Klatka = ((this->AktywnyLazik->Wez_OdlegloscDoPrzejechania()))/LiczbaKlatek;
 
   for ( int i = 0; i < LiczbaKlatek; ++i)
   {
@@ -66,10 +66,8 @@ bool Scena::AnimacjaTranslacji()
     this->AktywnyLazik->TranslacjaLazika();
     
     if(this->Kolizja_SprawdzLaziki()){
-      double Temp = (-1)*(this->AktywnyLazik->Wez_Szybkosc());
-      (this->AktywnyLazik)->Zmien_Szybkosc(Temp);
-      this->AktywnyLazik->Zmien_OdlegloscDoPrzejechania(5*Odleglosc_Klatka);
-      this->AktywnyLazik->TranslacjaLazika();
+
+      (this->Lacze).Rysuj();
       return false;
     }
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
@@ -79,8 +77,14 @@ bool Scena::AnimacjaTranslacji()
   return true;
 }
 
-void Scena::DodajDoListyObiektow (ObiektGeom& Ob1){
-  std::shared_ptr<ObiektGeom> Wsk = std::make_shared<ObiektGeom>();
+void Scena::DodajDoListyObiektow (Lazik& Ob1){
+  std::shared_ptr<ObiektGeom> Wsk = std::make_shared<Lazik>();
+  *Wsk = Ob1;
+  (this->ObiektySceny).push_back(Wsk);
+}
+
+void Scena::DodajDoListyObiektow (ProbkaRegolitu& Ob1){
+  std::shared_ptr<ObiektGeom> Wsk = std::make_shared<ProbkaRegolitu>();
   *Wsk = Ob1;
   (this->ObiektySceny).push_back(Wsk);
 }
