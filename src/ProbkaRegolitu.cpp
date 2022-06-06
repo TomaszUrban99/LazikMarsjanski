@@ -1,6 +1,6 @@
 #include "ProbkaRegolitu.hh"
 
-std::ostream& operator<< (std::ostream& Output, const ProbkaRegolitu Probka)
+std::ostream& operator<< (std::ostream& Output, ProbkaRegolitu& Probka)
 {
     Output << Probka.Wez_NazwaObiektu() << " " << "polozenie: " << Probka.Wez_Polozenie() << std::endl;
     return Output;

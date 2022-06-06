@@ -58,6 +58,7 @@ class Lazik: public ObiektGeom{
     void Zmien_Szybkosc(double NowaSzybkosc){
         this->Szybkosc = NowaSzybkosc;
     }
+
     void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
         (this->PredkoscObrotu) = NowaPredkoscObrotu;}
 
@@ -74,7 +75,7 @@ class Lazik: public ObiektGeom{
     
     void TranslacjaLazika ();
     
-    void ObrotLazika (double KatDoObrotuSt);
+    void ObrotLazika (double KatDoObrotuSt, double PredkoscObrotu);
 
 };
 

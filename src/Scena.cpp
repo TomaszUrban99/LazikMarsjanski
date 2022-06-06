@@ -100,8 +100,52 @@ void Scena::AnimacjaObrotu(double KatDoObrotuSt, double PredkoscObrotu)
 
   for (int i = 0; i < LiczbaKlatek; ++i)
   {
-    this->AktywnyLazik->ObrotLazika(Kat_Klatka);
+    this->AktywnyLazik->ObrotLazika(Kat_Klatka, PredkoscObrotu);
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
     (this->Lacze).Rysuj();
   }
+}
+
+std::list<std::shared_ptr<ProbkaRegolitu>> Scena::Wyswietl_Laziki()
+{
+  std::list<std::shared_ptr<ObiektGeom>>::iterator Iter = this->Wez_Liste().begin();
+    // inicjalizacjia Iteratora umożliwiającego poruszanie się po liście
+  std::list<std::shared_ptr<ProbkaRegolitu>> ListaProbek;
+    // lista zawierajaca wylacznie obiekty typu ProbkaRegolitu
+  std::shared_ptr<ProbkaRegolitu> TempProbka;
+      
+      while (Iter != this->Wez_Liste().end())
+      {
+        if ((*Iter)->Obiekt_ID() == ID_ProbkaRegolitu)
+        {
+          TempProbka = std::static_pointer_cast<ProbkaRegolitu>(*Iter);
+          ListaProbek.push_back(TempProbka);
+        } 
+        ++Iter;
+      }
+  
+  return ListaProbek;
+}
+
+std::ostream& operator<< (std::ostream& Output, std::list<std::shared_ptr<ProbkaRegolitu>> ListaProbek)
+{
+    int i = 0;
+        // zmienna pomocnicza do zliczania probek
+    
+    if (ListaProbek.size() == 0)
+        Output << "Brak probek" << std::endl;
+    else
+    {
+        Output << "Lista probek: " << std::endl;
+        std::list<std::shared_ptr<ProbkaRegolitu>>::iterator Iter = ListaProbek.begin();
+
+        while (Iter != ListaProbek.end())
+        {
+          ++i;
+          Output << "Probka " << i << ": " << (**Iter);
+          ++Iter;
+        } 
+    }
+
+    return Output;
 }

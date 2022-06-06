@@ -91,6 +91,8 @@ class Scena{
    
    void DodajDoListyRysowania();
 
+   std::list<std::shared_ptr<ProbkaRegolitu>> Wyswietl_Laziki();
+
    int LiczbaKlatekTranslacja () const;
 
    bool AnimacjaTranslacji ();
@@ -102,5 +104,7 @@ class Scena{
    bool Kolizja_SprawdzLaziki();
 
 };
+
+std::ostream& operator<< (std::ostream& Output, std::list<std::shared_ptr<ProbkaRegolitu>> ListaProbek);
 
 #endif

@@ -43,8 +43,10 @@ class ProbkaRegolitu: public ObiektGeom{
         \retval enum TypObiektu - identyfikator charakteryzujący próbkę regolitu
     */
     virtual enum TypObiektu Obiekt_ID () const override {return ID_ProbkaRegolitu;}
+
+    /*TypKolizji CzyKolizja (std::shared_ptr<Lazik>& Lazik2) const;*/
 };
 
-std::ostream& operator<<(std::ostream& Output, const ProbkaRegolitu Probka);
+std::ostream& operator<<(std::ostream& Output, ProbkaRegolitu& Probka);
 
 #endif

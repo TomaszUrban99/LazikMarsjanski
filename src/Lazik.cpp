@@ -27,10 +27,12 @@ void Lazik::TranslacjaLazika()
     this->Zmien_OdlegloscDoPrzejechania(ZERO);
 }
 
-void Lazik::ObrotLazika(double KatDoObrotuSt)
+void Lazik::ObrotLazika(double KatDoObrotuSt, double PredkoscObrotu)
 {
-    double Temp;
-    Temp = (this->Wez_KatOrientacjiSt())+Znak(this->PredkoscObrotu)*KatDoObrotuSt;
+    double Temp = 0;
+    
+    Temp = (this->Wez_KatOrientacjiSt())+Znak(PredkoscObrotu)*KatDoObrotuSt;
     this->ZmienKatOrientacjiSt(fmod(Temp, KAT_PELNY));
+    std::cout << this->Wez_KatOrientacjiSt() << std::endl;
     this->ZmienMacierzRotacji(this->Wez_KatOrientacjiSt());
 }

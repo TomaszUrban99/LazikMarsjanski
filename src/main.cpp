@@ -20,19 +20,20 @@ int main()
   Wektor3D PolozenieFSR (0, 0, 0);
   Wektor3D PolozeniePerservance (20, 20, 0);
   Wektor3D PolozenieCuriosity (50, 50, 0);
-  Wektor3D Skala (20, 20, 10);
+  Wektor3D Skala (15, 15, 10);
   Wektor3D SkalaProbka (5, 5, 2);
   Wektor3D PolozenieProbka1 (-20, -20, 0);
   Wektor3D PolozenieProbka2 (-30, -30, 0);
-  std::shared_ptr<ProbkaRegolitu> TempProbka;
+  std::list<std::shared_ptr<ProbkaRegolitu>> TempProbka;
+  std::shared_ptr<Lazik> TempProbka2;
 
   char klawisz[2] = "m";
 
-  Lazik Ob1(Kolor_JasnoNiebieski, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
+  Lazik Ob1(Random, 0, PolozenieFSR, Skala, "FSR", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/FSR");
   Lazik Ob2(Kolor_JasnoNiebieski, 0, PolozenieCuriosity, Skala, "Curiosity", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Curiosity");
   Lazik Ob3(Kolor_JasnoNiebieski, 0, PolozeniePerservance, Skala, "Perservarance", "bryly_wzorcowe/szescian3.dat", "pliki_do_rysowania/Perservarance");
   ProbkaRegolitu Ob4 (Kolor_Czerwony, 0, PolozenieProbka1, SkalaProbka, "Probka1", "bryly_wzorcowe/szescian1.dat", "pliki_do_rysowania/Probka1");
-  ProbkaRegolitu Ob5 (Kolor_Czerwony, 0, PolozenieProbka2, SkalaProbka, "Probka1", "bryly_wzorcowe/szescian1.dat", "pliki_do_rysowania/Probka2");
+  ProbkaRegolitu Ob5 (Kolor_Czerwony, 0, PolozenieProbka2, SkalaProbka, "Probka2", "bryly_wzorcowe/szescian1.dat", "pliki_do_rysowania/Probka2");
 
   Scena Mars(Ob1);
 
@@ -46,7 +47,7 @@ int main()
   if (!Inicjalizuj_PowierzchnieMarsa(Mars.Wez_Lacze())) return 1;
 
   Mars.DodajDoListyRysowania();
-  Mars.Zmien_AktywnyLazik(1);
+  Mars.Zmien_AktywnyLazik(0);
 
   list<shared_ptr<ObiektGeom>>::iterator Iter = Mars.Wez_Liste().begin();
 
@@ -73,7 +74,6 @@ int main()
   while((klawisz[0])!='k')
   {
     double Temp;
-    int i = 0;
 
     switch(klawisz[0])
     {
@@ -114,7 +114,8 @@ int main()
         Mars.AnimacjaObrotu(Temp, Temp2);
         cout << "Dolny lewy po rotacji: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
         cout << "Gorny prawy po rotacji: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
-
+        cout << "Plik wzorcowy po zmianie: " << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikBrylaWzorcowa() << endl;
+        cout << "Plik do rysowania po zmianie: " << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikDoRysowania() << endl;
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
         cin.ignore(100,'\n');
       
@@ -134,6 +135,7 @@ int main()
 
       case 'd':
 
+        TempProbka2 = Mars.Wez_AktywnyLazik();
         cout << *(Mars.Wez_AktywnyLazik()) << endl;
       
       break;
@@ -151,19 +153,8 @@ int main()
 
       case 'l':
 
-      Iter = Mars.Wez_Liste().begin();
-      cout << "Lista probek znajdujacych sie na scenie: " << std::endl;
-      
-      while (Iter != Mars.Wez_Liste().end())
-      {
-        if ((*Iter)->Obiekt_ID() == ID_ProbkaRegolitu)
-        {
-          TempProbka = static_pointer_cast<ProbkaRegolitu>(*Iter);
-          cout << "Probka " << ++i <<": " << (*TempProbka);
-         
-        } 
-        ++Iter;
-      }
+      TempProbka = Mars.Wyswietl_Laziki();
+      cout << TempProbka << std::endl;
 
       break;
 
