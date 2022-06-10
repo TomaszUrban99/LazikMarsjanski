@@ -50,7 +50,7 @@ class ObrysXY{
         \retval bool true - punkt zawiera się w opisanym obrysie
         \retval bool false - punkt znajduje się poza opisanym obrysem
     */
-    bool PrzeciecieObrysu_Przod (ObrysXY& Obrys);
+    bool PrzeciecieObrysu_Przod (const ObrysXY& Obrys) const;
 
     /*!
         \brief Metoda sprawdzajaca czy obrysy dwóch obiektów się przecinają.
@@ -61,7 +61,7 @@ class ObrysXY{
         \retval bool true - punkt zawiera się w opisanym obrysie
         \retval bool false - punkt znajduje się poza opisanym obrysem
     */
-    bool PrzeciecieObrysu_Tyl (ObrysXY& Obrys);
+    bool PrzeciecieObrysu_Tyl (const ObrysXY& Obrys) const;
 
 };
 

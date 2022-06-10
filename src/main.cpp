@@ -55,13 +55,7 @@ int main()
   {
     (**Iter).Przelicz_i_Zapisz_Wierzcholki();
     (**Iter).WyznaczObrysObiektu();
-    if((*Iter)->Obiekt_ID() == ID_Lazik )
-    {
-      cout << "Lazik: " << (**Iter) << endl;
-      cout << "Obrys lazikow: " << endl;
-      cout << (**Iter).Wez_ObrysXY().Wez_Wierz_DolnyLewy();
-      cout << (**Iter).Wez_ObrysXY().Wez_Wierz_GornyPrawy();
-    }
+    if((*Iter)->Obiekt_ID() == ID_Lazik ) cout << "Lazik: " << (**Iter) << endl;
     ++Iter;
   }
 

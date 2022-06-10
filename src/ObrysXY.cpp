@@ -1,6 +1,6 @@
 #include "ObrysXY.hh"
 
-    bool ObrysXY::PrzeciecieObrysu_Przod (ObrysXY& Obrys)
+    bool ObrysXY::PrzeciecieObrysu_Przod (const ObrysXY& Obrys) const
     {
         /* Rozpoczecie sprawdzenia od gornego prawego wierzcholka */
         if( Obrys.Wierz_DolnyLewy[0] <= Wierz_GornyPrawy[0])
@@ -18,7 +18,7 @@
         return false;
     }
 
-    bool ObrysXY::PrzeciecieObrysu_Tyl (ObrysXY& Obrys)
+    bool ObrysXY::PrzeciecieObrysu_Tyl (const ObrysXY& Obrys) const
     {
         if( Obrys.Wierz_DolnyLewy[0] <= Wierz_DolnyLewy[0] )
         {

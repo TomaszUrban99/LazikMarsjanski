@@ -1,8 +1,8 @@
 #include "Lazik.hh"
 
-enum TypKolizji Lazik::CzyKolizja (std::shared_ptr<Lazik>& Wsk_Lazik)
+enum TypKolizji Lazik::CzyKolizja (const std::shared_ptr<Lazik>& Wsk_Lazik) const
 {
-    if(Wez_ObrysXY().PrzeciecieObrysu_Przod((Wsk_Lazik)->Wez_ObrysXY())) return TK_Kolizja;
+    if(this->Wez_ObrysXY().PrzeciecieObrysu_Przod((Wsk_Lazik)->Wez_ObrysXY())) return TK_Kolizja;
     if(Wez_ObrysXY().PrzeciecieObrysu_Tyl((Wsk_Lazik)->Wez_ObrysXY())) return TK_Kolizja;
     
     return TK_BrakKolizji;

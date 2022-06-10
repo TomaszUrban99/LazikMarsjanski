@@ -20,7 +20,7 @@ ${OBJ}/main.o: src/main.cpp inc/Wektor3D.hh inc/Macierz3D.hh inc/ObiektGeom.hh i
 ${OBJ}/Scena.o: src/Scena.cpp inc/Lazik.hh inc/lacze_do_gnuplota.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/Scena.o src/Scena.cpp
 
-${OBJ}/ProbkaRegolitu.o: src/ProbkaRegolitu.cpp inc/ObiektGeom.hh
+${OBJ}/ProbkaRegolitu.o: src/ProbkaRegolitu.cpp inc/ObiektGeom.hh inc/Lazik.hh
 	g++ ${CXXFLAGS} -o ${OBJ}/ProbkaRegolitu.o src/ProbkaRegolitu.cpp
 
 ${OBJ}/Lazik.o: src/Lazik.cpp inc/ObiektGeom.hh inc/OperacjeMat.hh

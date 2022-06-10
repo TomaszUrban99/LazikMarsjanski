@@ -97,6 +97,35 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki(std::istream& Input, std::ostream
     return true;
 }
 
+bool ObiektGeom::WyliczSzerokosc_Obiektu()
+{
+    Wektor3D Temp1;
+    Wektor3D Temp2;
+    int i = 0;
+    
+    std::ifstream Input (NazwaPliku_BrylaWzorcowa);
+    
+    do
+    {
+        if(!(Input >> Temp1)) return false;
+        std::cout << "Pierwszy pobrany: " << Temp1 << std::endl;
+        if(!(Input >> Temp2)) return false;
+        std::cout << "Drugi pobrany: " << Temp1 << std::endl;
+
+        if (Temp1[2]!=Temp2[2])
+            if(!(Input >> Temp2)) return false;
+
+        ++i;
+
+    } while (i<4 && Temp1[2]!=Temp2[2]);
+
+    if (Temp1[2] != Temp2[2]) return false;
+    
+    SzerokoscObiektu = Skala[1] * fabs (Temp1[1] - Temp2[1]);
+
+    return true;
+}
+
 Wektor2D ObiektGeom::KonwersjaNaDwuwymiarowy(Wektor3D& Wektor2) const
 {
     Wektor2D NowyWektor;

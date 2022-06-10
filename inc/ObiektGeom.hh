@@ -3,15 +3,18 @@
 
 #include <string>
 #include <fstream>
+#include <memory>
 #include "Wektor3D.hh"
 #include "ObrysXY.hh"
 #include "Macierz3D.hh"
+
+class Lazik;
 
 /*!
     \brief Typ wyliczeniowy TypObiektu definiujący możliwe rodzaje obiektow
     znajdujacych się na scenie.
 */
-enum TypObiektu { ID_ObiektGeom, ID_Lazik, ID_ProbkaRegolitu};
+enum TypObiektu { ID_ObiektGeom, ID_Lazik, ID_LazikSFR, ID_ProbkaRegolitu};
 
 /*!
     \brief Typ wyliczeniowy TypKolizji definiujący możliwe rodzaje kolizji
@@ -24,6 +27,7 @@ class ObiektGeom{
     int KolorID;
     
     double KatOrientacjiSt;
+    double SzerokoscObiektu;
     
     Wektor3D Polozenie;
     Wektor3D Skala;
@@ -59,14 +63,15 @@ class ObiektGeom{
                 const std::string NowaNazwaObiektu, const std::string PlikWzorcowy, 
                 const std::string PlikDoRysowania)
    {
-       this->KolorID = Kolor;
-       this->KatOrientacjiSt = PoczatkowyKatOrientacjiSt;
-       this->MacierzRotacji = (this->MacierzRotacji).MacierzRotacjiZ(PoczatkowyKatOrientacjiSt);
-       this->Polozenie = PoczatkowePolozenie;
-       this->Skala = NowaSkala;
-       this->NazwaObiektu = NowaNazwaObiektu;
-       this->NazwaPliku_BrylaWzorcowa = PlikWzorcowy;
-       this->NazwaPliku_PlikDoRysowania = PlikDoRysowania; 
+       KolorID = Kolor;
+       KatOrientacjiSt = PoczatkowyKatOrientacjiSt;
+       MacierzRotacji = (this->MacierzRotacji).MacierzRotacjiZ(PoczatkowyKatOrientacjiSt);
+       Polozenie = PoczatkowePolozenie;
+       Skala = NowaSkala;
+       NazwaObiektu = NowaNazwaObiektu;
+       NazwaPliku_BrylaWzorcowa = PlikWzorcowy;
+       NazwaPliku_PlikDoRysowania = PlikDoRysowania;
+       SzerokoscObiektu = 0;
    }
 
    ObiektGeom(const ObiektGeom&) = default;
@@ -122,6 +127,10 @@ class ObiektGeom{
 
     double& Wez_KatOrientacjiSt() {return this->KatOrientacjiSt;}
 
+    double Wez_SzerokoscObiektu () const {return SzerokoscObiektu;}
+
+    double& Wez_SzerokoscObiektu () {return SzerokoscObiektu;}
+
     Wektor3D Wez_Polozenie() const {return this->Polozenie;}
 
     Wektor3D& Wez_Polozenie() {return this->Polozenie;} 
@@ -148,6 +157,8 @@ class ObiektGeom{
 
     ObrysXY& Wez_ObrysXY () {return this->Obrys;}
 
+    ObrysXY Wez_ObrysXY () const {return this->Obrys;}
+
     void Znajdz_DolnyLewy (Wektor3D& WektorWspolrzednych);
 
     void Znajdz_GornyPrawy (Wektor3D& WektorWspolrzednych);
@@ -159,6 +170,10 @@ class ObiektGeom{
     bool Przelicz_i_Zapisz_Wierzcholki (std::istream& Input, std::ostream& Output);
 
     Wektor2D KonwersjaNaDwuwymiarowy(Wektor3D& Wektor2) const;
+
+    bool WyliczSzerokosc_Obiektu ();
+
+    virtual enum TypKolizji CzyKolizja ( const std::shared_ptr<Lazik>& Wsk_Lazik ) const = 0;
 };
 
 std::ostream& operator<<(std::ostream& Output, ObiektGeom& DanyLazik);

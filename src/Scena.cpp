@@ -8,6 +8,7 @@ void Scena::Zmien_AktywnyLazik(int NumerLazika)
   for ( int i = 0; i < NumerLazika; ++i) {++Iter;} 
 
   this->AktywnyLazik = std::static_pointer_cast<Lazik>(*Iter);
+  AktywnyLazik->Wez_SzerokoscObiektu() = AktywnyLazik->WyliczSzerokosc_Obiektu();
 }
 
 bool Scena::Kolizja_SprawdzLaziki()
@@ -21,13 +22,17 @@ bool Scena::Kolizja_SprawdzLaziki()
       std::shared_ptr<Lazik> TempLazik = std::static_pointer_cast<Lazik>(*Iter);
       
       if( this->AktywnyLazik != TempLazik){
-        if(this->AktywnyLazik->CzyKolizja(TempLazik) == TK_Kolizja)
+        if(TempLazik->CzyKolizja(AktywnyLazik) == TK_Kolizja)
         {
           std::cout << "Dolny lewy kolizyjny: " << TempLazik->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
           std::cout << "Gorny prawy kolizyjny: " << TempLazik->Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
           return true;
         }
     }
+    }
+    if((*Iter)->Obiekt_ID() == ID_ProbkaRegolitu)
+    {
+      if((*Iter)->CzyKolizja(AktywnyLazik) == TK_PrzejazdNadProbka)
     }
     ++Iter;
   }

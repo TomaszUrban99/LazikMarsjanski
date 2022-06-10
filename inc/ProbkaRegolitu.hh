@@ -2,6 +2,7 @@
 #define PROBKAREGOLITU_HH
 
 #include "ObiektGeom.hh"
+#include "Lazik.hh"
 
 class ProbkaRegolitu: public ObiektGeom{
 
@@ -44,7 +45,7 @@ class ProbkaRegolitu: public ObiektGeom{
     */
     virtual enum TypObiektu Obiekt_ID () const override {return ID_ProbkaRegolitu;}
 
-    /*TypKolizji CzyKolizja (std::shared_ptr<Lazik>& Lazik2) const;*/
+    virtual enum TypKolizji CzyKolizja ( const std::shared_ptr<Lazik>& Wsk_Lazik ) const override;
 };
 
 std::ostream& operator<<(std::ostream& Output, ProbkaRegolitu& Probka);

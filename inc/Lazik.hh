@@ -6,7 +6,7 @@
 #include "ObiektGeom.hh"
 #include "OperacjeMat.hh"
 
-class Lazik: public ObiektGeom{
+class Lazik: public ObiektGeom {
 
     double OdlegloscDoPrzejechania = 0;
     double Szybkosc = 0;
@@ -71,7 +71,7 @@ class Lazik: public ObiektGeom{
     double Wez_PredkoscObrotu () const {return this->PredkoscObrotu;}
     double& Wez_PredkoscObrotu () {return this->PredkoscObrotu;}
     
-    enum TypKolizji CzyKolizja ( std::shared_ptr<Lazik>& Wsk_Lazik );
+    virtual enum TypKolizji CzyKolizja (const std::shared_ptr<Lazik>& Wsk_Lazik ) const override;
     
     void TranslacjaLazika ();
     
