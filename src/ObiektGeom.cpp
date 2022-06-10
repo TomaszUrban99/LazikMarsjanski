@@ -72,9 +72,16 @@ bool ObiektGeom::Przelicz_i_Zapisz_Wierzcholki(std::istream& Input, std::ostream
         if(!Input.fail())
         {
             WspWierz = (this->MacierzRotacji)*((this->Skala)*WspWierz) +(this->Polozenie);
-            
-            this->Znajdz_DolnyLewy(WspWierz);
-            this->Znajdz_GornyPrawy(WspWierz);
+
+            if (IndeksWiersza==ZERO){
+                Obrys.Wez_Wierz_DolnyLewy() = KonwersjaNaDwuwymiarowy(WspWierz);
+                Obrys.Wez_Wierz_GornyPrawy() = KonwersjaNaDwuwymiarowy(WspWierz);
+            }
+            else
+            {
+                this->Znajdz_DolnyLewy(WspWierz);
+                this->Znajdz_GornyPrawy(WspWierz);
+            }
             
             Output << WspWierz << std::endl;
             if(Output.fail()) {return false;}

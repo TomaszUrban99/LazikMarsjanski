@@ -9,7 +9,7 @@
 #include "PowierzchniaMarsa.hh"
 #include "ProbkaRegolitu.hh"
 
-constexpr int STALA_ANIMACJI_TRANSLACJA = 1000;
+constexpr int STALA_ANIMACJI_TRANSLACJA = 200;
 constexpr int STALA_ANIMACJI_ROTACJA = 200;
 
 class Scena{

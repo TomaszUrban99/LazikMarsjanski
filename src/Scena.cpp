@@ -16,9 +16,18 @@ bool Scena::Kolizja_SprawdzLaziki()
   
   for (long unsigned int i = 0; i < (this->ObiektySceny.size()); ++i)
   {
-    std::shared_ptr<Lazik> TempLazik = std::static_pointer_cast<Lazik>(*Iter);
-    if( this->AktywnyLazik != TempLazik){
-      if(this->AktywnyLazik->CzyKolizja(TempLazik) == TK_Kolizja) return true;
+    if((*Iter)->Obiekt_ID() == ID_Lazik)
+    {
+      std::shared_ptr<Lazik> TempLazik = std::static_pointer_cast<Lazik>(*Iter);
+      
+      if( this->AktywnyLazik != TempLazik){
+        if(this->AktywnyLazik->CzyKolizja(TempLazik) == TK_Kolizja)
+        {
+          std::cout << "Dolny lewy kolizyjny: " << TempLazik->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
+          std::cout << "Gorny prawy kolizyjny: " << TempLazik->Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
+          return true;
+        }
+    }
     }
     ++Iter;
   }
@@ -59,6 +68,8 @@ bool Scena::AnimacjaTranslacji()
 {
   int LiczbaKlatek = this->LiczbaKlatekTranslacja();
   double Odleglosc_Klatka = ((this->AktywnyLazik->Wez_OdlegloscDoPrzejechania()))/LiczbaKlatek;
+  
+  std::cout << "Pojedyncza klatka: " << Odleglosc_Klatka << std::endl;
 
   for ( int i = 0; i < LiczbaKlatek; ++i)
   {
@@ -66,14 +77,19 @@ bool Scena::AnimacjaTranslacji()
     this->AktywnyLazik->TranslacjaLazika();
     
     if(this->Kolizja_SprawdzLaziki()){
-
+      /*this->AktywnyLazik->Zmien_OdlegloscDoPrzejechania((-1)*Odleglosc_Klatka);
+      this->AktywnyLazik->TranslacjaLazika();*/
+      /*this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();*/
+      std::cout << "Gorny prawy jezd: " << this ->AktywnyLazik -> Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
+      std::cout << "Dolny lewy wierzch: " << this->AktywnyLazik->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
+      
       (this->Lacze).Rysuj();
-      return false;
-    }
+      return false;}
+
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
     (this->Lacze).Rysuj();
   }
-
+  
   return true;
 }
 
@@ -104,6 +120,9 @@ void Scena::AnimacjaObrotu(double KatDoObrotuSt, double PredkoscObrotu)
     this->AktywnyLazik->Przelicz_i_Zapisz_Wierzcholki();
     (this->Lacze).Rysuj();
   }
+
+  std::cout << "Obrys: " << AktywnyLazik->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
+  std::cout << "Gorny prawy obrys: " << AktywnyLazik->Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
 }
 
 std::list<std::shared_ptr<ProbkaRegolitu>> Scena::Wyswietl_Laziki()

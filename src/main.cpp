@@ -83,16 +83,10 @@ int main()
         cout << *(Mars.Wez_AktywnyLazik()) << endl;
         cout << "Podaj odleglosc" << endl;
         cin >> Temp;
-        cout << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikBrylaWzorcowa() << endl;
-        cout << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikDoRysowania() << endl;
         (*(Mars.Wez_AktywnyLazik())).Zmien_OdlegloscDoPrzejechania(Temp);
         cout << "Podaj szybkosc" << endl;
         cin >> Temp;
-        cout << "Szybkosc pobrana: " << Temp << std::endl;
         (Mars.Wez_AktywnyLazik())->Zmien_Szybkosc(Temp);
-        cout << "Plik wzorcowy po zmianie: " << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikBrylaWzorcowa() << endl;
-        cout << "Plik do rysowania po zmianie: " << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikDoRysowania() << endl;
-        cout << "Szybkosc 2.0: " << Mars.Wez_AktywnyLazik()->Wez_Szybkosc() << std::endl; 
         if(!Mars.AnimacjaTranslacji()) { cout << "Kolizja- ruch zatrzymany" << endl;}
       
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
@@ -108,14 +102,7 @@ int main()
         cin >> Temp;
         cout << "Podaj predkosc obrotu" << endl;
         cin >> Temp2;
-        
-        cout << "Dolny lewy: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
-        cout << "Gorny prawy: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
         Mars.AnimacjaObrotu(Temp, Temp2);
-        cout << "Dolny lewy po rotacji: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_DolnyLewy() << std::endl;
-        cout << "Gorny prawy po rotacji: " << Mars.Wez_AktywnyLazik()->Wez_ObrysXY().Wez_Wierz_GornyPrawy() << std::endl;
-        cout << "Plik wzorcowy po zmianie: " << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikBrylaWzorcowa() << endl;
-        cout << "Plik do rysowania po zmianie: " << Mars.Wez_AktywnyLazik()->Wez_NazwaPlikDoRysowania() << endl;
         cout << "Nacisnij klawisz ENTER, aby przejść dalej." << endl;
         cin.ignore(100,'\n');
       
@@ -134,10 +121,7 @@ int main()
       break;
 
       case 'd':
-
-        TempProbka2 = Mars.Wez_AktywnyLazik();
-        cout << *(Mars.Wez_AktywnyLazik()) << endl;
-      
+          cout << *(Mars.Wez_AktywnyLazik()) << endl;
       break;
 
       case 's':
@@ -146,8 +130,6 @@ int main()
         cout << "Podaj numer lazika, ktory chcesz wybrac" << endl;
         cin >> Numer;
         Mars.Zmien_AktywnyLazik(Numer);
-        cout << "Aktywny lazik: " << endl;
-        cout << *(Mars.Wez_AktywnyLazik()) << endl;
       
       break;
 

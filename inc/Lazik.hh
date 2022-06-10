@@ -56,7 +56,7 @@ class Lazik: public ObiektGeom{
     (this->OdlegloscDoPrzejechania) = NowaOdleglosc;}
     
     void Zmien_Szybkosc(double NowaSzybkosc){
-        this->Szybkosc = NowaSzybkosc;
+        Szybkosc = NowaSzybkosc;
     }
 
     void Zmien_PredkoscObrotu(double NowaPredkoscObrotu){
